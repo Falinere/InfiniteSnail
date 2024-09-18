@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dsd54mpi2vw4y"]
+
+[ext_resource type="Script" path="res://Scripts/Item.gd" id="1_rc7b2"]
+[ext_resource type="Texture2D" uid="uid://cdir43y36n2b6" path="res://icon.png" id="2_bsn1w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_67mqm"]
+size = Vector2(64, 64)
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_rc7b2")
+name = "Barrel"
+texture = ExtResource("2_bsn1w")
+key = 0
+collision_shape = SubResource("RectangleShape2D_67mqm")

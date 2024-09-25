@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b0k3glfk5pfyw"]
+
+[ext_resource type="Shader" path="res://Shaders/place_item.gdshader" id="1_qiny0"]
+
+[resource]
+shader = ExtResource("1_qiny0")
+shader_parameter/PREVIEW = true
+shader_parameter/PLACEABLE = true

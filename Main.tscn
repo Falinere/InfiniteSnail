@@ -1,12 +1,52 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtu1nw7cqb2ha"]
+[gd_scene load_steps=5 format=3 uid="uid://dtu1nw7cqb2ha"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_6dgby"]
 [ext_resource type="Script" path="res://Scripts/ItemPlacementManager.gd" id="2_wcpu4"]
+[ext_resource type="PackedScene" uid="uid://yrbusf788kwp" path="res://Scenes/WORLD_ITEM_UI.tscn" id="3_pcpgd"]
+[ext_resource type="Script" path="res://Scripts/Item_Container.gd" id="3_spt6m"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_6dgby")
+item_total = null
 
 [node name="ItemPlacementManager" type="Node" parent="."]
 script = ExtResource("2_wcpu4")
 
 [node name="ObstacleBucket" type="Node" parent="."]
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 849.0
+offset_top = 71.0
+offset_right = 1238.0
+offset_bottom = 169.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Item_Container" type="HBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(160, 80)
+layout_mode = 0
+offset_left = -283.0
+offset_top = -42.0
+offset_right = 212.0
+offset_bottom = 38.0
+theme_override_constants/separation = 165
+alignment = 2
+script = ExtResource("3_spt6m")
+
+[node name="1" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
+visible = false
+layout_mode = 2
+
+[node name="2" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
+visible = false
+layout_mode = 2
+
+[node name="3" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
+visible = false
+layout_mode = 2
+
+[node name="4" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
+visible = false
+layout_mode = 2

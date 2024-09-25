@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dhefeg3afjhl0"]
+[gd_scene load_steps=5 format=3 uid="uid://dhefeg3afjhl0"]
 
 [ext_resource type="Script" path="res://Scripts/PlacementItem.gd" id="1_mlcqy"]
+[ext_resource type="Material" uid="uid://b0k3glfk5pfyw" path="res://Shaders/material_place_item.tres" id="2_77db3"]
 [ext_resource type="Texture2D" uid="uid://cdir43y36n2b6" path="res://icon.png" id="2_tqx8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wfepo"]
@@ -10,6 +11,7 @@ size = Vector2(48, 48)
 script = ExtResource("1_mlcqy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_77db3")
 texture = ExtResource("2_tqx8b")
 
 [node name="Area2D" type="Area2D" parent="."]

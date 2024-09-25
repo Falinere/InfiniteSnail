@@ -8,8 +8,12 @@ class_name PlacementItem
 
 var preview_enabled : bool = false
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
+	
+	# makes each material shader unique so they behave independantly
+	sprite_2d.material = sprite_2d.material.duplicate(true)
+	
 	sprite_2d.texture = item_resource.texture
 	name = item_resource.name
 	if item_resource.shape_2d:
@@ -27,6 +31,7 @@ func _process(delta):
 	
 	if preview_enabled and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		preview_enabled = false
+		sprite_2d.material.set_shader_parameter("PREVIEW", false)
 
 
 
@@ -35,6 +40,7 @@ func _physics_process(delta):
 		global_position = get_global_mouse_position()
 	else:
 		global_position.x -= 3
+
 
 
 func setup() -> void:

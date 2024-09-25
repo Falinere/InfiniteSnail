@@ -1,5 +1,6 @@
 extends Node
 
+signal update_ui
 
 const WORLD_ITEM = preload("res://Scenes/Items/WorldItem.tscn")
 const ITEM_NODE = preload("res://Scenes/ItemNode.tscn")
@@ -50,6 +51,8 @@ func does_slot_exist(key_pressed : int) -> Node2D:
 
 
 func preview_item(item : Node) -> void:
+	
+	update_ui.emit()
 	
 	var item_instance = WORLD_ITEM.instantiate()
 	item_instance.position = get_parent().get_global_mouse_position()

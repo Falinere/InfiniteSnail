@@ -1,13 +1,12 @@
-[gd_scene load_steps=34 format=3 uid="uid://dtu1nw7cqb2ha"]
+[gd_scene load_steps=33 format=3 uid="uid://dtu1nw7cqb2ha"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_6dgby"]
-[ext_resource type="Texture2D" uid="uid://cdir43y36n2b6" path="res://icon.png" id="2_bava8"]
 [ext_resource type="PackedScene" uid="uid://yrbusf788kwp" path="res://Scenes/WORLD_ITEM_UI.tscn" id="3_pcpgd"]
 [ext_resource type="Script" path="res://Scripts/Item_Container.gd" id="3_spt6m"]
 [ext_resource type="Texture2D" uid="uid://ba5kw46jwmodi" path="res://Assets/Actors/snail-Sheet.png" id="5_ehbv6"]
 [ext_resource type="Texture2D" uid="uid://c8khpbaeo8ndk" path="res://Assets/Actors/truckSheet.png" id="6_avmi1"]
-[ext_resource type="Texture2D" uid="uid://w4ro324amahj" path="res://Assets/Environments/Desert/foreground.png" id="7_l2amr"]
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground_script.gd" id="7_m8pky"]
+[ext_resource type="Texture2D" uid="uid://do6mrg33wv0nf" path="res://Assets/Environments/Desert/Road.png" id="9_nbu5c"]
 [ext_resource type="Texture2D" uid="uid://cwbriv2hxhas1" path="res://Assets/Environments/Desert/middleground.png" id="9_w7iac"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ep5tw"]
@@ -188,14 +187,10 @@ animations = [{
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_6dgby")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0, 0, 0, 1)
-z_index = -500
-z_as_relative = false
-position = Vector2(970, 162)
-scale = Vector2(40, 40)
-texture = ExtResource("2_bava8")
+[node name="Item" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 10.0
+autostart = true
 
 [node name="ObstacleBucket" type="Node" parent="."]
 
@@ -258,7 +253,7 @@ motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(1494.5, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-2, 83)
+position = Vector2(-2, 186)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("9_w7iac")
 centered = false
@@ -269,8 +264,7 @@ motion_mirroring = Vector2(1920, 0)
 
 [node name="Foreground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
 position = Vector2(-1, 181)
-scale = Vector2(0.35, 0.35)
-texture = ExtResource("7_l2amr")
+texture = ExtResource("9_nbu5c")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]

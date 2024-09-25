@@ -1,9 +1,16 @@
-[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://vdhrfjopjuj6"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://vdhrfjopjuj6"]
 
 [ext_resource type="Script" path="res://Scripts/Item.gd" id="1_hc8cg"]
+[ext_resource type="Texture2D" uid="uid://cdir43y36n2b6" path="res://icon.png" id="2_ndbg2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1mcbd"]
+size = Vector2(40, 40)
 
 [resource]
 script = ExtResource("1_hc8cg")
-name = ""
+name = "Saw"
+texture = ExtResource("2_ndbg2")
 key = 0
+shape_2d = SubResource("RectangleShape2D_1mcbd")
 polygon_2d = PackedVector2Array()
+ui_texture = ExtResource("2_ndbg2")

@@ -6,10 +6,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fok4o"]
 bg_color = Color(0.151276, 0.151276, 0.151276, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
 corner_radius_top_left = 15
 corner_radius_top_right = 15
 corner_radius_bottom_right = 15

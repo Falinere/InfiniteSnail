@@ -26,10 +26,6 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("four"):
 		item_placement_manager.select_item(4)
-	
-	# Remove this code later
-	if Input.is_action_just_pressed("space"):
-		add_new_item()
 
 
 

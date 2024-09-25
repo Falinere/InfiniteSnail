@@ -2,6 +2,7 @@ extends Node2D
 class_name PlacementItem
 
 @export var item_resource : Item
+@export var speed : int = 3
 @onready var sprite_2d = $Sprite2D
 @onready var collision_shape_2d = $Area2D/CollisionShape2D
 @onready var collision_polygon_2d = $Area2D/CollisionPolygon2D
@@ -39,7 +40,7 @@ func _physics_process(delta):
 	if preview_enabled:
 		global_position = get_global_mouse_position()
 	else:
-		global_position.x -= 3
+		global_position.x -= speed
 
 
 

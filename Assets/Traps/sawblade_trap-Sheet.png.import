@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnk8vxfvga26n"
-path="res://.godot/imported/tile_0054.png-d9c9dc5fe56f16d9f10849cb89b102a4.ctex"
+uid="uid://d3fco6dd4q2ud"
+path="res://.godot/imported/sawblade_trap-Sheet.png-f083824be3c08acd4fbb3ac69c2861ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/tile_0054.png"
-dest_files=["res://.godot/imported/tile_0054.png-d9c9dc5fe56f16d9f10849cb89b102a4.ctex"]
+source_file="res://Assets/Traps/sawblade_trap-Sheet.png"
+dest_files=["res://.godot/imported/sawblade_trap-Sheet.png-f083824be3c08acd4fbb3ac69c2861ad.ctex"]
 
 [params]
 

@@ -4,10 +4,7 @@ extends HBoxContainer
 
 
 func update_ui() -> void:
-	print("UI Updated")
-
-
-func add_new_item():
 	item_total += 1
 	var item_str : String = str(item_total)
+	get_node(item_str).setup()
 	get_node(item_str).visible = true

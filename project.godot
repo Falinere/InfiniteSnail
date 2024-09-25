@@ -15,14 +15,13 @@ run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
-[debug]
-
-settings/stdout/print_fps=true
-
 [display]
 
-window/size/viewport_width=1150
+window/size/viewport_width=1920
 window/size/viewport_height=550
+window/size/window_width_override=1400
+window/size/window_height_override=403
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
@@ -60,3 +59,4 @@ space={
 
 textures/canvas_textures/default_texture_filter=0
 textures/lossless_compression/force_png=true
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

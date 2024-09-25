@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cdir43y36n2b6" path="res://icon.png" id="1_hmt0f"]
 [ext_resource type="Script" path="res://Scripts/WORLD_ITEM_UI.gd" id="1_igfip"]
-[ext_resource type="Texture2D" uid="uid://dlwytsecq442p" path="res://Assets/1.png" id="1_s8xew"]
+[ext_resource type="Texture2D" uid="uid://dlwytsecq442p" path="res://Assets/1.png" id="2_lbl0w"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fok4o"]
 bg_color = Color(0.151276, 0.151276, 0.151276, 1)
@@ -46,15 +46,18 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="Keyboard_Input" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-texture = ExtResource("1_s8xew")
+texture = ExtResource("2_lbl0w")
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer"]
+[node name="Item_Image" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource("1_hmt0f")
-stretch_mode = 2
+expand_mode = 1

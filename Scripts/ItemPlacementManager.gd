@@ -7,14 +7,22 @@ const ITEM_NODE = preload("res://Scenes/ItemNode.tscn")
 
 
 var resource_array : Array[Item] = []
-
+var obstacle_bucket
+var item_total : int = 0
+var timer : SceneTreeTimer
 
 
 func _ready():
 	popuplate_resource_array()
 	resource_array.shuffle()
-	add_new_option(0)
+	add_new_option()
+	timer_setup()
 
+
+func timer_setup() -> void:
+	timer = get_tree().create_timer(75)
+	if !timer.timeout.is_connected(add_new_option):
+		timer.timeout.connect(add_new_option)
 
 
 func popuplate_resource_array():
@@ -52,17 +60,30 @@ func does_slot_exist(key_pressed : int) -> Node2D:
 
 func preview_item(item : Node) -> void:
 	
-	update_ui.emit()
-	
 	var item_instance = WORLD_ITEM.instantiate()
-	item_instance.position = get_parent().get_global_mouse_position()
+	item_instance.position = get_window().get_mouse_position()
 	item_instance.item_resource = item.item_resource
 	item_instance.preview_enabled = true
-	get_parent().get_node("ObstacleBucket").add_child(item_instance)
+	obstacle_bucket.add_child(item_instance)
 
 
-func add_new_option(number : int) -> void:
+func add_new_option() -> void:
+	if item_total > 4: return
 	var option = ITEM_NODE.instantiate()
-	option.item_resource = resource_array[number]
-	option.item_resource.key = number + 1
+	option.item_resource = resource_array[item_total]
+	option.item_resource.key = item_total
+	option.name = option.item_resource.name
+	item_total += 1
 	add_child(option)
+	update_ui.emit()
+	timer_setup()
+
+
+func get_active_abilities() -> Array:
+	return get_children()
+
+
+func get_ability(number : int) -> Node:
+	if number > get_child_count():
+		return null
+	return get_child(number - 1)

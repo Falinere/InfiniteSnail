@@ -7,3 +7,4 @@ class_name Item
 @export var key : int
 @export var shape_2d : Shape2D
 @export var polygon_2d : PackedVector2Array
+@export var ui_texture : Texture2D

@@ -1,8 +1,7 @@
-[gd_scene load_steps=35 format=3 uid="uid://dtu1nw7cqb2ha"]
+[gd_scene load_steps=34 format=3 uid="uid://dtu1nw7cqb2ha"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_6dgby"]
 [ext_resource type="Texture2D" uid="uid://cdir43y36n2b6" path="res://icon.png" id="2_bava8"]
-[ext_resource type="Script" path="res://Scripts/ItemPlacementManager.gd" id="2_wcpu4"]
 [ext_resource type="PackedScene" uid="uid://yrbusf788kwp" path="res://Scenes/WORLD_ITEM_UI.tscn" id="3_pcpgd"]
 [ext_resource type="Script" path="res://Scripts/Item_Container.gd" id="3_spt6m"]
 [ext_resource type="Texture2D" uid="uid://ba5kw46jwmodi" path="res://Assets/Actors/snail-Sheet.png" id="5_ehbv6"]
@@ -198,9 +197,6 @@ position = Vector2(970, 162)
 scale = Vector2(40, 40)
 texture = ExtResource("2_bava8")
 
-[node name="ItemPlacementManager" type="Node" parent="."]
-script = ExtResource("2_wcpu4")
-
 [node name="ObstacleBucket" type="Node" parent="."]
 
 [node name="UI" type="Control" parent="."]
@@ -278,3 +274,10 @@ texture = ExtResource("7_l2amr")
 centered = false
 
 [node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 785.0
+offset_top = 297.0
+offset_right = 825.0
+offset_bottom = 320.0

@@ -59,8 +59,15 @@ space={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Objects"
+2d_physics/layer_2="Upper Wall"
+2d_physics/layer_3="Lower Wall"
+2d_physics/layer_4="Snail"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 textures/lossless_compression/force_png=true
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+environment/defaults/default_clear_color=Color(0.533333, 0.443137, 0.666667, 1)

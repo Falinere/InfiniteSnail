@@ -1,63 +1,31 @@
-[gd_scene load_steps=33 format=3 uid="uid://dtu1nw7cqb2ha"]
+[gd_scene load_steps=40 format=3 uid="uid://dtu1nw7cqb2ha"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_6dgby"]
+[ext_resource type="Script" path="res://Scripts/RoadsideObjectSpawner.gd" id="2_qp0ck"]
 [ext_resource type="PackedScene" uid="uid://yrbusf788kwp" path="res://Scenes/WORLD_ITEM_UI.tscn" id="3_pcpgd"]
 [ext_resource type="Script" path="res://Scripts/Item_Container.gd" id="3_spt6m"]
-[ext_resource type="Texture2D" uid="uid://ba5kw46jwmodi" path="res://Assets/Actors/snail-Sheet.png" id="5_ehbv6"]
+[ext_resource type="PackedScene" uid="uid://bkymcwc67p43" path="res://Scenes/Snail.tscn" id="5_g8ltj"]
 [ext_resource type="Texture2D" uid="uid://c8khpbaeo8ndk" path="res://Assets/Actors/truckSheet.png" id="6_avmi1"]
+[ext_resource type="Texture2D" uid="uid://cjlw2peqc7sga" path="res://Assets/Environments/Desert/sun.png" id="7_aaxb4"]
+[ext_resource type="Texture2D" uid="uid://dodq656damn01" path="res://Assets/Environments/Desert/mount3.png" id="7_dj4c1"]
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground_script.gd" id="7_m8pky"]
+[ext_resource type="Texture2D" uid="uid://bt1m5ufmico5t" path="res://Assets/Environments/Desert/mesa1.png" id="8_f3ihh"]
+[ext_resource type="Texture2D" uid="uid://1bvk6k0cxejo" path="res://Assets/Environments/Desert/mount1.png" id="8_hme2v"]
+[ext_resource type="Texture2D" uid="uid://d3jupy3omupiu" path="res://Assets/Environments/Desert/mesa2.png" id="9_3vypm"]
 [ext_resource type="Texture2D" uid="uid://do6mrg33wv0nf" path="res://Assets/Environments/Desert/Road.png" id="9_nbu5c"]
 [ext_resource type="Texture2D" uid="uid://cwbriv2hxhas1" path="res://Assets/Environments/Desert/middleground.png" id="9_w7iac"]
+[ext_resource type="Texture2D" uid="uid://dvwpv4echms66" path="res://Assets/Environments/Desert/mesa4.png" id="10_hcpuv"]
+[ext_resource type="Texture2D" uid="uid://d4ivxwlurs3q" path="res://Assets/Environments/Desert/mesa6.png" id="11_dno6j"]
+[ext_resource type="Texture2D" uid="uid://clr88magdyhx8" path="res://Assets/Environments/Desert/mesa3.png" id="14_jdmdt"]
+[ext_resource type="PackedScene" uid="uid://bxtpprf2tegj4" path="res://Scenes/RoadsideObject.tscn" id="18_msu0p"]
+[ext_resource type="Texture2D" uid="uid://vbn5x2pgclmv" path="res://Assets/Environments/Desert/skull.png" id="18_nuk4y"]
+[ext_resource type="Texture2D" uid="uid://ci2ysx31rgbqg" path="res://Assets/Environments/Desert/cowskull.png" id="19_q8wnj"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ep5tw"]
-atlas = ExtResource("5_ehbv6")
-region = Rect2(0, 0, 362, 241)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nhep"]
+size = Vector2(1542, 178)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_daea8"]
-atlas = ExtResource("5_ehbv6")
-region = Rect2(362, 0, 362, 241)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_82ixq"]
-atlas = ExtResource("5_ehbv6")
-region = Rect2(724, 0, 362, 241)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_78a2a"]
-atlas = ExtResource("5_ehbv6")
-region = Rect2(0, 241, 362, 241)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1nbxm"]
-atlas = ExtResource("5_ehbv6")
-region = Rect2(362, 241, 362, 241)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ak34f"]
-atlas = ExtResource("5_ehbv6")
-region = Rect2(724, 241, 362, 241)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_8pnjw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ep5tw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_daea8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_82ixq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_78a2a")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1nbxm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ak34f")
-}],
-"loop": true,
-"name": &"default",
-"speed": 9.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n5vc2"]
+size = Vector2(361, 218)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b78m4"]
 atlas = ExtResource("6_avmi1")
@@ -190,9 +158,45 @@ script = ExtResource("1_6dgby")
 [node name="Item" type="Timer" parent="."]
 unique_name_in_owner = true
 wait_time = 10.0
-autostart = true
 
-[node name="ObstacleBucket" type="Node" parent="."]
+[node name="ObstacleBucket" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Area2D" type="Area2D" parent="Walls"]
+position = Vector2(758, 215)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D"]
+position = Vector2(18, 13)
+shape = SubResource("RectangleShape2D_3nhep")
+
+[node name="Area2D2" type="Area2D" parent="Walls"]
+position = Vector2(753, 561)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D2"]
+position = Vector2(18, 79)
+shape = SubResource("RectangleShape2D_3nhep")
+
+[node name="PlaceableObjectArea" type="Area2D" parent="."]
+position = Vector2(1298, 449)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceableObjectArea"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_n5vc2")
+
+[node name="RoadsideObjectSpawner" type="Marker2D" parent="."]
+position = Vector2(2036, 300)
+script = ExtResource("2_qp0ck")
+
+[node name="Timer" type="Timer" parent="RoadsideObjectSpawner"]
+autostart = true
 
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
@@ -231,13 +235,8 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="Snail" type="AnimatedSprite2D" parent="."]
-z_index = 5
-position = Vector2(154, 392)
-sprite_frames = SubResource("SpriteFrames_8pnjw")
-autoplay = "default"
-frame = 5
-frame_progress = 0.0165161
+[node name="Snail" parent="." instance=ExtResource("5_g8ltj")]
+position = Vector2(217, 368)
 
 [node name="Truck" type="AnimatedSprite2D" parent="."]
 position = Vector2(1706, 388)
@@ -248,26 +247,64 @@ frame_progress = 0.931609
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("7_m8pky")
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Mount3" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(1596, 282)
+texture = ExtResource("7_dj4c1")
+
+[node name="Mount1" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(723, 256)
+texture = ExtResource("8_hme2v")
+
+[node name="Sun" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(106, 38)
+texture = ExtResource("7_aaxb4")
+flip_h = true
+
+[node name="MiddleGround" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(0.5, 0.5)
 motion_mirroring = Vector2(1494.5, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MiddleGround"]
 position = Vector2(-2, 186)
 scale = Vector2(0.35, 0.35)
 texture = ExtResource("9_w7iac")
 centered = false
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Closer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Mesa1" type="Sprite2D" parent="ParallaxBackground/Closer"]
+position = Vector2(219, 220)
+texture = ExtResource("8_f3ihh")
+
+[node name="Mesa2" type="Sprite2D" parent="ParallaxBackground/Closer"]
+position = Vector2(640, 203)
+texture = ExtResource("9_3vypm")
+
+[node name="Mesa4" type="Sprite2D" parent="ParallaxBackground/Closer"]
+position = Vector2(1438.5, 180.5)
+texture = ExtResource("10_hcpuv")
+
+[node name="Mesa6" type="Sprite2D" parent="ParallaxBackground/Closer"]
+position = Vector2(1055.5, 181.5)
+texture = ExtResource("11_dno6j")
+
+[node name="Mesa3" type="Sprite2D" parent="ParallaxBackground/Closer"]
+position = Vector2(1706.5, 310.5)
+texture = ExtResource("14_jdmdt")
+
+[node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(3, 3)
 motion_mirroring = Vector2(1920, 0)
 
-[node name="Foreground" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+[node name="Foreground" type="Sprite2D" parent="ParallaxBackground/Foreground"]
 position = Vector2(-1, 181)
 texture = ExtResource("9_nbu5c")
 centered = false
-
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true
@@ -275,3 +312,14 @@ offset_left = 785.0
 offset_top = 297.0
 offset_right = 825.0
 offset_bottom = 320.0
+
+[node name="EnviromentItem" parent="." instance=ExtResource("18_msu0p")]
+position = Vector2(876, 301)
+texture = ExtResource("18_nuk4y")
+
+[node name="EnviromentItem2" parent="." instance=ExtResource("18_msu0p")]
+position = Vector2(565, 278)
+texture = ExtResource("19_q8wnj")
+
+[connection signal="mouse_entered" from="PlaceableObjectArea" to="." method="_on_mouse_entered_object_area"]
+[connection signal="mouse_exited" from="PlaceableObjectArea" to="." method="_on_mouse_exited_object_area"]

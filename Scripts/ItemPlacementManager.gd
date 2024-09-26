@@ -9,12 +9,16 @@ const ITEM_NODE = preload("res://Scenes/ItemNode.tscn")
 var resource_array : Array[Item] = []
 var item_total : int = 0
 var obstacle_bucket
+var can_place_object : bool = false
 
 
 func _ready():
 	popuplate_resource_array()
 	resource_array.shuffle()
 	await get_tree().create_timer(2.0).timeout
+	add_new_option()
+	add_new_option()
+	add_new_option()
 	add_new_option()
 
 
@@ -74,6 +78,7 @@ func add_new_option() -> void:
 	item_total += 1
 	option.item_resource.key = item_total
 	add_child(option)
+	#option.sprite_2d.offset = option.item_resource.offset
 	update_ui.emit()
 
 

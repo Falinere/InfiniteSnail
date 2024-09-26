@@ -1,18 +1,19 @@
 [gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://vdhrfjopjuj6"]
 
 [ext_resource type="Script" path="res://Scripts/Item.gd" id="1_hc8cg"]
-[ext_resource type="Texture2D" uid="uid://cdir43y36n2b6" path="res://icon.png" id="2_ndbg2"]
+[ext_resource type="Texture2D" uid="uid://dbwocn2l1amsk" path="res://Assets/Traps/sawblade_image.png" id="2_jhvcv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1mcbd"]
-size = Vector2(40, 40)
+size = Vector2(170, 60)
 
 [resource]
 script = ExtResource("1_hc8cg")
 name = "SpinningBlade"
-texture = ExtResource("2_ndbg2")
+texture = ExtResource("2_jhvcv")
 key = 0
 shape_2d = SubResource("RectangleShape2D_1mcbd")
 polygon_2d = PackedVector2Array()
-ui_texture = ExtResource("2_ndbg2")
+ui_texture = ExtResource("2_jhvcv")
+offset = Vector2(220, -50)
 item_effect = 2
 knockback_strength = 500

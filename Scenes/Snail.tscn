@@ -123,17 +123,17 @@ position = Vector2(65, 45)
 script = ExtResource("4_bkcfe")
 
 [node name="1" type="RayCast2D" parent="Top"]
-position = Vector2(2, -22)
-target_position = Vector2(15, -21)
+position = Vector2(-15, -37)
+target_position = Vector2(5, -14)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="2" type="RayCast2D" parent="Top"]
-position = Vector2(2, -22)
+position = Vector2(-14, -37)
 enabled = false
-target_position = Vector2(70, -96)
+target_position = Vector2(52, -76)
 collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
@@ -143,18 +143,18 @@ collide_with_bodies = false
 script = ExtResource("4_bkcfe")
 
 [node name="1" type="RayCast2D" parent="Bottom"]
-position = Vector2(65, 61)
-target_position = Vector2(20, 20)
-collision_mask = 2
+position = Vector2(50, 74)
+target_position = Vector2(4, 16)
+collision_mask = 4
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false
 
 [node name="2" type="RayCast2D" parent="Bottom"]
-position = Vector2(65, 61)
+position = Vector2(50, 74)
 enabled = false
-target_position = Vector2(61, 96)
-collision_mask = 2
+target_position = Vector2(43, 67)
+collision_mask = 4
 hit_from_inside = true
 collide_with_areas = true
 collide_with_bodies = false

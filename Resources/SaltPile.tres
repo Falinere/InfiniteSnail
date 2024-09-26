@@ -1,17 +1,15 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://b5gmq3x5xomoq"]
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://b5gmq3x5xomoq"]
 
 [ext_resource type="Script" path="res://Scripts/Item.gd" id="1_iy2no"]
-[ext_resource type="Texture2D" uid="uid://cdir43y36n2b6" path="res://icon.png" id="2_1lnsw"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hf6f"]
-size = Vector2(40, 40)
+[ext_resource type="Texture2D" uid="uid://bijs4efodcxpx" path="res://Assets/Traps/saltfall_image.png" id="2_58xts"]
 
 [resource]
 script = ExtResource("1_iy2no")
 name = "SaltPile"
-texture = ExtResource("2_1lnsw")
+texture = ExtResource("2_58xts")
 key = 0
-shape_2d = SubResource("RectangleShape2D_3hf6f")
-polygon_2d = PackedVector2Array()
-ui_texture = ExtResource("2_1lnsw")
+polygon_2d = PackedVector2Array(-4, -35, 62, 10, -2, 32, -63, 11)
+ui_texture = ExtResource("2_58xts")
+offset = Vector2(0, -170)
 item_effect = 0
+knockback_strength = 0

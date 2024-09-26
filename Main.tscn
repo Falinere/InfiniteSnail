@@ -25,7 +25,7 @@
 size = Vector2(1542, 178)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n5vc2"]
-size = Vector2(361, 166)
+size = Vector2(361, 218)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b78m4"]
 atlas = ExtResource("6_avmi1")
@@ -159,7 +159,8 @@ script = ExtResource("1_6dgby")
 unique_name_in_owner = true
 wait_time = 10.0
 
-[node name="ObstacleBucket" type="Node" parent="."]
+[node name="ObstacleBucket" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Walls" type="Node" parent="."]
 
@@ -174,7 +175,7 @@ shape = SubResource("RectangleShape2D_3nhep")
 
 [node name="Area2D2" type="Area2D" parent="Walls"]
 position = Vector2(753, 561)
-collision_layer = 2
+collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D2"]
@@ -187,6 +188,7 @@ collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlaceableObjectArea"]
+position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_n5vc2")
 
 [node name="RoadsideObjectSpawner" type="Marker2D" parent="."]
@@ -234,7 +236,7 @@ visible = false
 layout_mode = 2
 
 [node name="Snail" parent="." instance=ExtResource("5_g8ltj")]
-position = Vector2(197, 391)
+position = Vector2(217, 368)
 
 [node name="Truck" type="AnimatedSprite2D" parent="."]
 position = Vector2(1706, 388)

@@ -78,6 +78,7 @@ func add_new_option() -> void:
 	item_total += 1
 	option.item_resource.key = item_total
 	add_child(option)
+	#option.sprite_2d.offset = option.item_resource.offset
 	update_ui.emit()
 
 

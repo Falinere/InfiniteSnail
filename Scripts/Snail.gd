@@ -8,9 +8,9 @@ extends CharacterBody2D
 
 
 @export var speed : int = 10
-var vertical_speed : int = 35
+var vertical_speed : int = 25
 var speed_min : int = 10
-var speed_max : int = 50
+var speed_max : int = 70
 
 var _velocity = Vector2.ZERO
 var _previous_speed : int = 0
@@ -46,17 +46,13 @@ func _physics_process(delta):
 	
 	#Force apply escape velocity away from walls
 	if check_top.colliding():
-		print("Colliding On Top")
 		$Top.move_away()
 		_velocity.y = vertical_speed
-	#else:
-		#$Top.reset()
+	
 	if check_bottom.colliding():
-		print("Colliding On Bottom")
 		$Bottom.move_away()
 		_velocity.y = vertical_speed * -1
-	#else:
-		#$Bottom.reset()
+	
 	
 	
 	velocity = _velocity
@@ -84,12 +80,10 @@ func _on_area_2d_area_entered(area):
 		1:
 			move_stop("start")
 		2:
-			for child in area.get_children():
-				child.queue_free()
+			area.get_parent().queue_free()
 			push_s("start", trap)
 		3:
-			for child in area.get_children():
-				child.queue_free()
+			area.get_parent().queue_free()
 			push_h("start", trap)
 
 
@@ -137,6 +131,6 @@ func push_h(timing : String, trap : Item) -> void:
 
 
 func add_new_ability() -> void:
-	#speed += 10
+	speed += 15
 	if speed > speed_max:
 		speed = speed_max

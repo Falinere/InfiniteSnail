@@ -9,12 +9,16 @@ const ITEM_NODE = preload("res://Scenes/ItemNode.tscn")
 var resource_array : Array[Item] = []
 var item_total : int = 0
 var obstacle_bucket
+var can_place_object : bool = false
 
 
 func _ready():
 	popuplate_resource_array()
 	resource_array.shuffle()
 	await get_tree().create_timer(2.0).timeout
+	add_new_option()
+	add_new_option()
+	add_new_option()
 	add_new_option()
 
 

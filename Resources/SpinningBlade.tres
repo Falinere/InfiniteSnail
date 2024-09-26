@@ -8,9 +8,11 @@ size = Vector2(40, 40)
 
 [resource]
 script = ExtResource("1_hc8cg")
-name = "Saw"
+name = "SpinningBlade"
 texture = ExtResource("2_ndbg2")
 key = 0
 shape_2d = SubResource("RectangleShape2D_1mcbd")
 polygon_2d = PackedVector2Array()
 ui_texture = ExtResource("2_ndbg2")
+item_effect = 2
+knockback_strength = 500

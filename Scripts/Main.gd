@@ -32,4 +32,9 @@ func _process(_delta):
 
 
 
+func _on_mouse_entered_object_area():
+	ItemPlacementManager.can_place_object = true
 
+
+func _on_mouse_exited_object_area():
+	ItemPlacementManager.can_place_object = false

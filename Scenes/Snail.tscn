@@ -1,0 +1,163 @@
+[gd_scene load_steps=13 format=3 uid="uid://bkymcwc67p43"]
+
+[ext_resource type="Texture2D" uid="uid://ba5kw46jwmodi" path="res://Assets/Actors/snail-Sheet.png" id="1_ullt4"]
+[ext_resource type="Script" path="res://Scripts/Snail.gd" id="2_83tr5"]
+[ext_resource type="Script" path="res://Scripts/DetectObject.gd" id="3_hy2i8"]
+[ext_resource type="Script" path="res://Scripts/toggle_raycasts.gd" id="4_bkcfe"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrhjr"]
+atlas = ExtResource("1_ullt4")
+region = Rect2(0, 0, 362, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfp6y"]
+atlas = ExtResource("1_ullt4")
+region = Rect2(362, 0, 362, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1cp6e"]
+atlas = ExtResource("1_ullt4")
+region = Rect2(724, 0, 362, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cksgk"]
+atlas = ExtResource("1_ullt4")
+region = Rect2(0, 241, 362, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fj2h"]
+atlas = ExtResource("1_ullt4")
+region = Rect2(362, 241, 362, 241)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kttw"]
+atlas = ExtResource("1_ullt4")
+region = Rect2(724, 241, 362, 241)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ma70i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrhjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfp6y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1cp6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cksgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fj2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kttw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mbj14"]
+size = Vector2(153, 67)
+
+[node name="Snail" type="CharacterBody2D"]
+z_index = 5
+position = Vector2(154, 392)
+script = ExtResource("2_83tr5")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ma70i")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="AnimatedSprite2D"]
+position = Vector2(-21, 25)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/Area2D"]
+position = Vector2(-17.5, 17.5)
+shape = SubResource("RectangleShape2D_mbj14")
+
+[node name="DetectObject" type="RayCast2D" parent="."]
+position = Vector2(66, 45)
+target_position = Vector2(150, 0)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("3_hy2i8")
+
+[node name="DetectObject2" type="RayCast2D" parent="."]
+position = Vector2(66, 45)
+target_position = Vector2(118, -63)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("3_hy2i8")
+direction = 1
+
+[node name="DetectObject3" type="RayCast2D" parent="."]
+position = Vector2(66, 45)
+target_position = Vector2(143, -31)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("3_hy2i8")
+direction = 1
+
+[node name="DetectObject4" type="RayCast2D" parent="."]
+position = Vector2(66, 45)
+target_position = Vector2(137, 23)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("3_hy2i8")
+direction = -1
+
+[node name="DetectObject5" type="RayCast2D" parent="."]
+position = Vector2(66, 45)
+target_position = Vector2(122, 43)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("3_hy2i8")
+direction = -1
+
+[node name="Top" type="Node2D" parent="."]
+position = Vector2(65, 45)
+script = ExtResource("4_bkcfe")
+
+[node name="1" type="RayCast2D" parent="Top"]
+position = Vector2(2, -22)
+target_position = Vector2(15, -21)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="2" type="RayCast2D" parent="Top"]
+position = Vector2(2, -22)
+enabled = false
+target_position = Vector2(70, -96)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Bottom" type="Node2D" parent="."]
+script = ExtResource("4_bkcfe")
+
+[node name="1" type="RayCast2D" parent="Bottom"]
+position = Vector2(65, 61)
+target_position = Vector2(20, 20)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="2" type="RayCast2D" parent="Bottom"]
+position = Vector2(65, 61)
+enabled = false
+target_position = Vector2(61, 96)
+collision_mask = 2
+hit_from_inside = true
+collide_with_areas = true
+collide_with_bodies = false
+
+[connection signal="area_entered" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="AnimatedSprite2D/Area2D" to="." method="_on_area_2d_area_exited"]

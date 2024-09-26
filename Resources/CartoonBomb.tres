@@ -1,12 +1,18 @@
-[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bvso67peuf34a"]
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bvso67peuf34a"]
 
 [ext_resource type="Script" path="res://Scripts/Item.gd" id="1_jnvx4"]
 [ext_resource type="Texture2D" uid="uid://da8wwl2meu880" path="res://icon.svg" id="2_as1hy"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e5err"]
+size = Vector2(40, 40)
+
 [resource]
 script = ExtResource("1_jnvx4")
-name = "Wall"
+name = "CartoonBomb"
 texture = ExtResource("2_as1hy")
 key = 0
+shape_2d = SubResource("RectangleShape2D_e5err")
 polygon_2d = PackedVector2Array(-31, -32, 32, -32, 32, 31, -31, 31)
 ui_texture = ExtResource("2_as1hy")
+item_effect = 3
+knockback_strength = 1000

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dsd54mpi2vw4y"]
+
+[ext_resource type="Script" path="res://Scripts/Item.gd" id="1_uhbbi"]
+[ext_resource type="Texture2D" uid="uid://cdir43y36n2b6" path="res://icon.png" id="2_a37nj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80hka"]
+size = Vector2(40, 40)
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_uhbbi")
+name = "SpikeTrap"
+texture = ExtResource("2_a37nj")
+key = 0
+shape_2d = SubResource("RectangleShape2D_80hka")
+polygon_2d = PackedVector2Array()
+ui_texture = ExtResource("2_a37nj")
+item_effect = 1

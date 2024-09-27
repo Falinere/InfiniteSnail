@@ -7,10 +7,12 @@
 resource_local_to_scene = true
 script = ExtResource("1_uhbbi")
 name = "SpikeTrap"
-texture = ExtResource("2_nsxey")
 key = 0
-polygon_2d = PackedVector2Array(-65, -25, 66, -24, 102, 36, -102, 35)
-ui_texture = ExtResource("2_nsxey")
 offset = Vector2(0, 0)
 item_effect = 1
 knockback_strength = 0
+max_uses = 2
+cooldown_value = 5
+texture = ExtResource("2_nsxey")
+ui_texture = ExtResource("2_nsxey")
+polygon_2d = PackedVector2Array(-65, -25, 66, -24, 102, 36, -102, 35)

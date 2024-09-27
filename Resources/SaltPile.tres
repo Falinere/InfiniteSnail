@@ -6,10 +6,12 @@
 [resource]
 script = ExtResource("1_iy2no")
 name = "SaltPile"
-texture = ExtResource("2_58xts")
 key = 0
-polygon_2d = PackedVector2Array(-4, -35, 62, 10, -2, 32, -63, 11)
-ui_texture = ExtResource("2_58xts")
 offset = Vector2(0, -170)
 item_effect = 0
 knockback_strength = 0
+max_uses = 3
+cooldown_value = 3
+texture = ExtResource("2_58xts")
+ui_texture = ExtResource("2_58xts")
+polygon_2d = PackedVector2Array(-4, -35, 62, 10, -2, 32, -63, 11)

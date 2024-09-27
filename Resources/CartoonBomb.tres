@@ -9,11 +9,13 @@ size = Vector2(40, 40)
 [resource]
 script = ExtResource("1_jnvx4")
 name = "CartoonBomb"
-texture = ExtResource("2_txhow")
 key = 0
-shape_2d = SubResource("RectangleShape2D_e5err")
-polygon_2d = PackedVector2Array()
-ui_texture = ExtResource("2_txhow")
 offset = Vector2(0, 0)
 item_effect = 3
 knockback_strength = 1000
+max_uses = 1
+cooldown_value = 8
+texture = ExtResource("2_txhow")
+ui_texture = ExtResource("2_txhow")
+shape_2d = SubResource("RectangleShape2D_e5err")
+polygon_2d = PackedVector2Array()

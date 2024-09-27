@@ -1,6 +1,7 @@
 extends Node
 
 signal update_ui
+signal reduce_item(number)
 
 const WORLD_ITEM = preload("res://Scenes/Items/WorldItem.tscn")
 const ITEM_NODE = preload("res://Scenes/ItemNode.tscn")
@@ -10,6 +11,14 @@ var resource_array : Array[Item] = []
 var item_total : int = 0
 var obstacle_bucket
 var can_place_object : bool = false
+
+var item_available : Dictionary = {
+	1 : false,
+	2 : false, 
+	3 : false,
+	4 : false,
+}
+
 
 
 func _ready():
@@ -41,8 +50,10 @@ func popuplate_resource_array():
 func select_item(key_pressed : int) -> void:
 	
 	var selected_item = does_slot_exist(key_pressed)
-	
 	if selected_item == null:
+		return
+	
+	if !item_available[key_pressed]:
 		return
 	
 	preview_item(selected_item)
@@ -81,6 +92,7 @@ func add_new_option() -> void:
 	add_child(option)
 	#option.sprite_2d.offset = option.item_resource.offset
 	update_ui.emit()
+	update_object_placement_ability(item_total, true)
 
 
 func get_active_abilities() -> Array:
@@ -91,3 +103,11 @@ func get_ability(number : int) -> Node:
 	if number > get_child_count():
 		return null
 	return get_child(number - 1)
+
+
+func update_object_placement_ability(index : int, update : bool) -> void:
+	item_available[index] = update
+
+
+func reduce_item_quantity(key : int):
+	reduce_item.emit(key)

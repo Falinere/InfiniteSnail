@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://5pi5yorj36yq"]
+[gd_scene load_steps=4 format=3 uid="uid://5pi5yorj36yq"]
 
 [ext_resource type="Script" path="res://Scripts/SplashScreenManager.gd" id="1_4abnu"]
 [ext_resource type="Texture2D" uid="uid://bl01kg6iykfik" path="res://Assets/SplashScreen/made-with-godot-light.png" id="1_dlqeg"]
+[ext_resource type="PackedScene" uid="uid://w44doyx5q45j" path="res://Scenes/TitleMenu.tscn" id="2_h7cag"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -11,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4abnu")
+load_scene = ExtResource("2_h7cag")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

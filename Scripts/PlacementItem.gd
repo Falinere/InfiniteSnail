@@ -53,6 +53,10 @@ func _physics_process(delta):
 
 
 func setup() -> void:
+	
+	# Tells the Item Manager that we've used an Item so it can update the UI
+	ItemPlacementManager.reduce_item_quantity(item_resource.key)
+	
 	sprite_2d.material.set_shader_parameter("PREVIEW", false)
 	area_2d.monitorable = true
 	area_2d.monitoring = true

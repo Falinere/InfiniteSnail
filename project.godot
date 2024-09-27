@@ -11,8 +11,12 @@ config_version=5
 [application]
 
 config/name="Immortal Snail"
-run/main_scene="res://Main.tscn"
+run/main_scene="res://Scenes/SplashScreenManager.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
+boot_splash/image="res://Assets/SplashScreen/made-with-godot-light.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -30,6 +34,10 @@ window/stretch/mode="viewport"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/fontawesome/plugin.cfg")
+
+[gui]
+
+theme/custom="res://new_theme.tres"
 
 [input]
 

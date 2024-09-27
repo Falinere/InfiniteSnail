@@ -9,6 +9,7 @@ var number_image_dic = {
 
 
 func setup(number : int) -> void:
+	print("Item Setup Called")
 	var item_node = ItemPlacementManager.get_ability(number)
 	if item_node == null: return
 	%Keyboard_Input.texture = number_image_dic[number]

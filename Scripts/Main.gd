@@ -1,19 +1,25 @@
 extends Node2D
 
+signal Main_Scene_Loaded
+
 @export var item_total : int = 0
 
 @onready var item_container = $UI/Item_Container
 @onready var label = %Label
 @onready var item = %Item
+@onready var animation_player = $AnimationPlayer
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#item_container.connect("update_ui", item_container.update_ui)
+	animation_player.play("reveal")
 	ItemPlacementManager.obstacle_bucket = $ObstacleBucket
 	ItemPlacementManager.update_ui.connect(item_container.update_ui)
 	item.timeout.connect(ItemPlacementManager.add_new_option)
+	ItemPlacementManager.main_scene_on()
+	Main_Scene_Loaded.emit()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

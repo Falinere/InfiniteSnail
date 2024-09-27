@@ -4,7 +4,6 @@ extends HBoxContainer
 
 
 func update_ui() -> void:
-	
 	item_total += 1
 	
 	if item_total > 4:

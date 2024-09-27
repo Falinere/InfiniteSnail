@@ -1,9 +1,393 @@
-[gd_scene format=3 uid="uid://w44doyx5q45j"]
+[gd_scene load_steps=36 format=3 uid="uid://w44doyx5q45j"]
 
-[node name="Control" type="Control"]
+[ext_resource type="Theme" uid="uid://b2r8mpitg2c5c" path="res://new_theme.tres" id="1_1cwqb"]
+[ext_resource type="Script" path="res://Scripts/TitleMenu.gd" id="1_nh2w7"]
+[ext_resource type="Script" path="res://Scripts/ParallaxBackground_script.gd" id="2_obwmu"]
+[ext_resource type="Texture2D" uid="uid://dodq656damn01" path="res://Assets/Environments/Desert/mount3.png" id="3_ah6fh"]
+[ext_resource type="Texture2D" uid="uid://1bvk6k0cxejo" path="res://Assets/Environments/Desert/mount1.png" id="4_ghw8w"]
+[ext_resource type="Texture2D" uid="uid://cjlw2peqc7sga" path="res://Assets/Environments/Desert/sun.png" id="5_6ua4e"]
+[ext_resource type="Texture2D" uid="uid://cwbriv2hxhas1" path="res://Assets/Environments/Desert/middleground.png" id="6_lux66"]
+[ext_resource type="Texture2D" uid="uid://bt1m5ufmico5t" path="res://Assets/Environments/Desert/mesa1.png" id="7_fr5fq"]
+[ext_resource type="Texture2D" uid="uid://d3jupy3omupiu" path="res://Assets/Environments/Desert/mesa2.png" id="8_wf1ec"]
+[ext_resource type="Texture2D" uid="uid://dvwpv4echms66" path="res://Assets/Environments/Desert/mesa4.png" id="9_4y8wp"]
+[ext_resource type="Texture2D" uid="uid://d4ivxwlurs3q" path="res://Assets/Environments/Desert/mesa6.png" id="10_0wkto"]
+[ext_resource type="Texture2D" uid="uid://clr88magdyhx8" path="res://Assets/Environments/Desert/mesa3.png" id="11_mrbyv"]
+[ext_resource type="Texture2D" uid="uid://do6mrg33wv0nf" path="res://Assets/Environments/Desert/Road.png" id="12_vxunv"]
+[ext_resource type="Texture2D" uid="uid://c8khpbaeo8ndk" path="res://Assets/Actors/truckSheet.png" id="14_tcmad"]
+
+[sub_resource type="Animation" id="Animation_4eied"]
+resource_name = "title_sequence_start"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Truck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 4),
+"transitions": PackedFloat32Array(0.5, 0.5),
+"update": 0,
+"values": [Vector2(-400, 361), Vector2(1706, 361)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vcrpc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Truck:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1706, 361)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CenterContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CenterContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3194, -1376)]
+}
+
+[sub_resource type="Animation" id="Animation_50mee"]
+resource_name = "start_game"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3194, -1376), Vector2(0, -1376)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gkw2q"]
+_data = {
+"RESET": SubResource("Animation_vcrpc"),
+"start_game": SubResource("Animation_50mee"),
+"title_sequence_start": SubResource("Animation_4eied")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b78m4"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(0, 0, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qyq5w"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(433, 0, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2xgqp"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(866, 0, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj522"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(1299, 0, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwguy"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(0, 0, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhyre"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(433, 0, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mi5ea"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(866, 0, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cadg"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(1299, 0, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i6cv"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(0, 236, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgo1h"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(433, 236, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lasp8"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(866, 236, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjriw"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(1299, 236, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s3eu1"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(0, 472, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esc44"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(433, 472, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tvxjt"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(866, 472, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d2m1"]
+atlas = ExtResource("14_tcmad")
+region = Rect2(1299, 472, 433, 236)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_30j0e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b78m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qyq5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2xgqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj522")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwguy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhyre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mi5ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cadg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3i6cv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgo1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lasp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjriw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s3eu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_esc44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tvxjt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d2m1")
+}],
+"loop": true,
+"name": &"sawblade",
+"speed": 10.0
+}]
+
+[node name="TitleMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nh2w7")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = ExtResource("2_obwmu")
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Mount3" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(1596, 282)
+texture = ExtResource("3_ah6fh")
+
+[node name="Mount1" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(723, 256)
+texture = ExtResource("4_ghw8w")
+
+[node name="Sun" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(106, 38)
+texture = ExtResource("5_6ua4e")
+flip_h = true
+
+[node name="MiddleGround" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/MiddleGround"]
+position = Vector2(-2, 123)
+texture = ExtResource("6_lux66")
+centered = false
+
+[node name="Closer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Mesa1" type="Sprite2D" parent="ParallaxBackground/Closer"]
+position = Vector2(219, 220)
+texture = ExtResource("7_fr5fq")
+
+[node name="Mesa2" type="Sprite2D" parent="ParallaxBackground/Closer"]
+position = Vector2(640, 203)
+texture = ExtResource("8_wf1ec")
+
+[node name="Mesa4" type="Sprite2D" parent="ParallaxBackground/Closer"]
+position = Vector2(1438.5, 180.5)
+texture = ExtResource("9_4y8wp")
+
+[node name="Mesa6" type="Sprite2D" parent="ParallaxBackground/Closer"]
+position = Vector2(1055.5, 181.5)
+texture = ExtResource("10_0wkto")
+
+[node name="Mesa3" type="Sprite2D" parent="ParallaxBackground/Closer"]
+position = Vector2(1706.5, 310.5)
+texture = ExtResource("11_mrbyv")
+
+[node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(3, 3)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Foreground" type="Sprite2D" parent="ParallaxBackground/Foreground"]
+position = Vector2(-1, 181)
+texture = ExtResource("12_vxunv")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 550.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "New Game"
+
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_1cwqb")
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1571.0
+offset_top = 332.0
+offset_right = 2000.0
+offset_bottom = 617.0
+text = "Game Design/Programming
+Falinere
+
+Art and Sound Design
+LemurToast"
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 25.0
+offset_top = 446.0
+offset_right = 664.0
+offset_bottom = 517.0
+text = "Equip Traps with keys 1-4
+Don't let the Snail touch you!"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gkw2q")
+}
+
+[node name="Truck" type="AnimatedSprite2D" parent="."]
+position = Vector2(1706, 361)
+sprite_frames = SubResource("SpriteFrames_30j0e")
+autoplay = "default"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3194.0
+offset_top = -1376.0
+offset_right = 8114.0
+offset_bottom = 2174.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.567232
+color = Color(0, 0, 0, 1)
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_new_game_button_pressed"]

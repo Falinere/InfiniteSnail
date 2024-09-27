@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Snail
 
 @onready var check_top = $"Top"
 @onready var check_bottom = $"Bottom"
@@ -112,7 +113,7 @@ func move_slow(timing : String) -> void:
 func move_stop(timing : String) -> void:
 	if timing == "start":
 		_previous_speed = speed
-		speed = 0
+		speed = -5
 	else:
 		speed = _previous_speed
 	print("Stop")

@@ -1,7 +1,7 @@
 extends Control
 
 
-@export var load_scene = "res://Scenes/TitleMenu.tscn"
+@export var load_scene : PackedScene
 @export var in_time : float = 0.5
 @export var fade_in_time : float = 1.5
 @export var pause_time : float = 1.5
@@ -23,5 +23,5 @@ func fade() -> void:
 	tween.tween_property(splash_screen, "modulate:a", 0.0, fade_out_time)
 	tween.tween_interval(out_time)
 	await tween.finished
-	get_tree().change_scene_to_file(load_scene)
+	get_tree().change_scene_to_packed(load_scene)
 	

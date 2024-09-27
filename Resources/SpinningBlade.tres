@@ -9,11 +9,13 @@ size = Vector2(170, 60)
 [resource]
 script = ExtResource("1_hc8cg")
 name = "SpinningBlade"
-texture = ExtResource("2_jhvcv")
 key = 0
-shape_2d = SubResource("RectangleShape2D_1mcbd")
-polygon_2d = PackedVector2Array()
-ui_texture = ExtResource("2_jhvcv")
 offset = Vector2(220, -50)
 item_effect = 2
 knockback_strength = 500
+max_uses = 3
+cooldown_value = 5
+texture = ExtResource("2_jhvcv")
+ui_texture = ExtResource("2_jhvcv")
+shape_2d = SubResource("RectangleShape2D_1mcbd")
+polygon_2d = PackedVector2Array()

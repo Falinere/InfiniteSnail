@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://yrbusf788kwp"]
+[gd_scene load_steps=8 format=3 uid="uid://yrbusf788kwp"]
 
 [ext_resource type="Texture2D" uid="uid://cdir43y36n2b6" path="res://icon.png" id="1_hmt0f"]
 [ext_resource type="Script" path="res://Scripts/WORLD_ITEM_UI.gd" id="1_igfip"]
@@ -15,13 +15,45 @@ corner_radius_top_right = 15
 corner_radius_bottom_right = 15
 corner_radius_bottom_left = 15
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovk0d"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.152941, 0.152941, 0.152941, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wlnlw"]
+bg_color = Color(0.310617, 0.310617, 0.310617, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.152941, 0.152941, 0.152941, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xnj6a"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.152941, 0.152941, 0.152941, 0.152941)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="Control" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_igfip")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
@@ -29,6 +61,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 136.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fok4o")
@@ -61,3 +95,41 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 texture = ExtResource("1_hmt0f")
 expand_mode = 1
+
+[node name="1" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+offset_left = 17.0
+offset_top = 103.0
+offset_right = 37.0
+offset_bottom = 123.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ovk0d")
+
+[node name="2" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+offset_left = 58.0
+offset_top = 103.0
+offset_right = 78.0
+offset_bottom = 123.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ovk0d")
+
+[node name="3" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+offset_left = 99.0
+offset_top = 103.0
+offset_right = 119.0
+offset_bottom = 123.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ovk0d")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 106.0
+offset_right = 135.0
+offset_bottom = 120.0
+theme_override_styles/background = SubResource("StyleBoxFlat_wlnlw")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xnj6a")
+max_value = 5.0
+show_percentage = false

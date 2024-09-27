@@ -17,6 +17,7 @@ func _ready():
 	animation_player.play("reveal")
 	ItemPlacementManager.obstacle_bucket = $ObstacleBucket
 	ItemPlacementManager.update_ui.connect(item_container.update_ui)
+	ItemPlacementManager.reduce_item.connect(item_container.item_used)
 	item.timeout.connect(ItemPlacementManager.add_new_option)
 	ItemPlacementManager.main_scene_on()
 	Main_Scene_Loaded.emit()

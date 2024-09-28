@@ -47,8 +47,8 @@ func fade_out() -> void:
 	tween.tween_property(get_node(str(uses_available)), "modulate:a", 0.0, 0.3)
 	uses_available -= 1
 	if uses_available == 0:
-		await tween.finished
 		ItemPlacementManager.update_object_placement_ability(item_resource_holder.key, false)
+		await tween.finished
 		start_progress_bar()
 
 

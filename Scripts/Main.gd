@@ -8,6 +8,8 @@ signal Main_Scene_Loaded
 @onready var label = %Label
 @onready var item = %Item
 @onready var animation_player = $AnimationPlayer
+@onready var progress_bar = $ProgressBar
+
 
 
 
@@ -24,7 +26,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	if Input.is_action_just_pressed("one"):
 		ItemPlacementManager.select_item(1)
 	
@@ -36,6 +38,8 @@ func _process(_delta):
 	
 	if Input.is_action_just_pressed("four"):
 		ItemPlacementManager.select_item(4)
+	
+	progress_bar.value += delta
 
 
 

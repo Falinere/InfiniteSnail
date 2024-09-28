@@ -6,21 +6,27 @@ class_name Snail
 @onready var detect_object = $DetectObject
 @onready var timer = $Timer
 @onready var raycast_array : Array[RayCast2D] = [$DetectObject, $DetectObject2, $DetectObject3, $DetectObject4, $DetectObject5]
+@onready var area_2d = $AnimatedSprite2D/Area2D
 
 
-@export var speed : int = 10
-var vertical_speed : int = 25
-var speed_min : int = 10
-var speed_max : int = 70
 
+@export var speed : int = 25
+var cur_speed : int = 0
+@export var vertical_speed : int = 25
+var cur_vertical_speed : int = 0
+var speed_max : int = 100
 var _velocity = Vector2.ZERO
 var _previous_speed : int = 0
-
 var knockback_force = Vector2.ZERO
-
 var vertical_weight : int = 0
+var wait_for_speed_reset : bool = false
+
+
+
 
 func _ready():
+	cur_speed = speed
+	cur_vertical_speed = vertical_speed
 	timer.timeout.connect(add_new_ability)
 	for node in raycast_array:
 		node.object_collision.connect(establish_raycast_weight)
@@ -30,31 +36,31 @@ func _ready():
 
 func _physics_process(delta):
 	
-	_velocity.x = speed + knockback_force.x
+	if wait_for_speed_reset:
+		wait_for_speed_reset = false
+		add_new_ability()
+	
+	if area_2d.has_overlapping_areas():
+		what_areas_overlap()
+	
+	_velocity.x = cur_speed + knockback_force.x
 	_velocity.y = 0
 	
 	var colliding = raycast_array.any(func(x : RayCast2D): return x.is_colliding())
 	if colliding and _velocity.y == 0:
-		_velocity.y = vertical_speed if vertical_weight > 0 else vertical_speed * -1
+		_velocity.y = cur_vertical_speed if vertical_weight > 0 else cur_vertical_speed * -1
 	
-	if colliding:
-		velocity = _velocity
-		move_and_slide()
-		knockback_force = lerp(knockback_force, Vector2.ZERO, 0.1)
-		return
-	else:
-		vertical_weight = 0
 	
 	#Force apply escape velocity away from walls
 	if check_top.colliding():
 		$Top.move_away()
-		_velocity.y = vertical_speed
-	
+		_velocity.y = cur_vertical_speed
 	if check_bottom.colliding():
 		$Bottom.move_away()
-		_velocity.y = vertical_speed * -1
+		_velocity.y = cur_vertical_speed * -1
 	
-	
+	if !colliding:
+		vertical_weight = 0
 	
 	velocity = _velocity
 	move_and_slide()
@@ -70,6 +76,11 @@ func check_raycasts() -> bool :
 
 func establish_raycast_weight(weight : int):
 	vertical_weight += weight
+
+
+func what_areas_overlap() -> void:
+	for node in area_2d.get_overlapping_areas():
+		_on_area_2d_area_entered(node)
 
 
 func _on_area_2d_area_entered(area):
@@ -104,18 +115,21 @@ func _on_area_2d_area_exited(area):
 
 func move_slow(timing : String) -> void:
 	if timing == "start":
-		speed /= 2
+		if cur_speed != speed / 2:
+			cur_speed = speed / 2
 	else:
-		speed *= 2
+		cur_speed = speed
 	print("Slow")
 
 
 func move_stop(timing : String) -> void:
 	if timing == "start":
-		_previous_speed = speed
-		speed = -5
+		if cur_speed != -10:
+			cur_speed = -10
+			cur_vertical_speed = 0
 	else:
-		speed = _previous_speed
+		cur_speed = speed
+		cur_vertical_speed = vertical_speed
 	print("Stop")
 
 
@@ -132,6 +146,14 @@ func push_h(timing : String, trap : Item) -> void:
 
 
 func add_new_ability() -> void:
-	speed += 15
+	#Don't increase speed if we are currently affected by a trap
+	#wait for the trap to leave the body before apply speed boost
+	if cur_speed != speed:
+		wait_for_speed_reset = true
+		return
+	
 	if speed > speed_max:
 		speed = speed_max
+	else:
+		speed += 15
+	cur_speed = speed

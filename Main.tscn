@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dtu1nw7cqb2ha"]
+[gd_scene load_steps=69 format=3 uid="uid://dtu1nw7cqb2ha"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_6dgby"]
 [ext_resource type="Script" path="res://Scripts/RoadsideObjectSpawner.gd" id="2_qp0ck"]
@@ -21,6 +21,17 @@
 [ext_resource type="PackedScene" uid="uid://bxtpprf2tegj4" path="res://Scenes/RoadsideObject.tscn" id="18_msu0p"]
 [ext_resource type="Texture2D" uid="uid://vbn5x2pgclmv" path="res://Assets/Environments/Desert/skull.png" id="18_nuk4y"]
 [ext_resource type="Texture2D" uid="uid://ci2ysx31rgbqg" path="res://Assets/Environments/Desert/cowskull.png" id="19_q8wnj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc34f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nhep"]
 size = Vector2(1542, 178)
@@ -395,6 +406,14 @@ script = ExtResource("1_6dgby")
 unique_name_in_owner = true
 wait_time = 10.0
 
+[node name="Panel" type="Panel" parent="."]
+offset_left = 1117.0
+offset_top = 332.0
+offset_right = 1479.0
+offset_bottom = 550.0
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_lc34f")
+
 [node name="ObstacleBucket" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -416,6 +435,25 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Area2D2"]
 position = Vector2(18, 79)
+shape = SubResource("RectangleShape2D_3nhep")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Walls"]
+visible = false
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D"]
+position = Vector2(776, 230)
+shape = SubResource("RectangleShape2D_3nhep")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Walls"]
+visible = false
+position = Vector2(-4, 403)
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/StaticBody2D2"]
+position = Vector2(776, 230)
 shape = SubResource("RectangleShape2D_3nhep")
 
 [node name="PlaceableObjectArea" type="Area2D" parent="."]
@@ -470,6 +508,14 @@ layout_mode = 2
 [node name="4" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
 visible = false
 layout_mode = 2
+
+[node name="EnviromentItem" parent="." instance=ExtResource("18_msu0p")]
+position = Vector2(876, 301)
+texture = ExtResource("18_nuk4y")
+
+[node name="EnviromentItem2" parent="." instance=ExtResource("18_msu0p")]
+position = Vector2(565, 307)
+texture = ExtResource("19_q8wnj")
 
 [node name="Snail" parent="." instance=ExtResource("5_g8ltj")]
 position = Vector2(217, 368)
@@ -549,14 +595,6 @@ offset_top = 297.0
 offset_right = 825.0
 offset_bottom = 320.0
 
-[node name="EnviromentItem" parent="." instance=ExtResource("18_msu0p")]
-position = Vector2(876, 301)
-texture = ExtResource("18_nuk4y")
-
-[node name="EnviromentItem2" parent="." instance=ExtResource("18_msu0p")]
-position = Vector2(565, 307)
-texture = ExtResource("19_q8wnj")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ti2cw")
@@ -570,6 +608,13 @@ offset_right = 3266.0
 offset_bottom = 1051.0
 rotation = 0.567232
 color = Color(0, 0, 0, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 370.0
+offset_top = 49.0
+offset_right = 770.0
+offset_bottom = 87.0
+max_value = 120.0
 
 [connection signal="mouse_entered" from="PlaceableObjectArea" to="." method="_on_mouse_entered_object_area"]
 [connection signal="mouse_exited" from="PlaceableObjectArea" to="." method="_on_mouse_exited_object_area"]

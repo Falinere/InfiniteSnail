@@ -63,7 +63,8 @@ func reset_pips() -> void:
 	# Cooldown Starts properly but we do not update UI when progress bar is full
 	# Check to see if we update the ItemPlacementManager to know if that item can be placed again
 	
-	print(item_resource_holder.name)
+	ItemPlacementManager.update_object_placement_ability(item_resource_holder.key, true)
 	for value in item_resource_holder.max_uses:
+		get_node(str(value + 1)).modulate.a = 1.0
 		get_node(str(value + 1)).visible = true
 	

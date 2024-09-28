@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://w44doyx5q45j"]
+[gd_scene load_steps=53 format=3 uid="uid://w44doyx5q45j"]
 
 [ext_resource type="Theme" uid="uid://b2r8mpitg2c5c" path="res://new_theme.tres" id="1_1cwqb"]
 [ext_resource type="Script" path="res://Scripts/TitleMenu.gd" id="1_nh2w7"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://clr88magdyhx8" path="res://Assets/Environments/Desert/mesa3.png" id="11_mrbyv"]
 [ext_resource type="Texture2D" uid="uid://do6mrg33wv0nf" path="res://Assets/Environments/Desert/Road.png" id="12_vxunv"]
 [ext_resource type="Texture2D" uid="uid://c8khpbaeo8ndk" path="res://Assets/Actors/truckSheet.png" id="14_tcmad"]
+[ext_resource type="Texture2D" uid="uid://c2k8bev64asns" path="res://Assets/Actors/truck.png" id="15_g8h03"]
+[ext_resource type="Texture2D" uid="uid://dku4u8qkq277n" path="res://Assets/SplashScreen/logo-Sheet.png" id="15_xxwlb"]
 
 [sub_resource type="Animation" id="Animation_vcrpc"]
 length = 0.001
@@ -27,7 +29,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1706, 361)]
+"values": [Vector2(-400, 361)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -65,6 +67,78 @@ tracks/3/keys = {
 "update": 0,
 "values": [Vector2(3194, -1376)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Truck2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-216, 287)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Logo:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/path = NodePath("Logo:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Logo:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(503, 267)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Label:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Label2:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_50mee"]
 resource_name = "start_game"
@@ -83,7 +157,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_4eied"]
-resource_name = "title_sequence_start"
+resource_name = "Load Menu Options"
 length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -121,12 +195,90 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Label:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Label2:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vd735"]
+resource_name = "DisplayLogo"
+length = 3.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Truck2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-216, 287), Vector2(2130, 287)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Logo:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath("Logo:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.55, 0.6, 0.6001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Logo:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.6, 3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(503, 267), Vector2(503, 60)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gkw2q"]
 _data = {
+"DisplayLogo": SubResource("Animation_vd735"),
+"Load Menu Options": SubResource("Animation_4eied"),
 "RESET": SubResource("Animation_vcrpc"),
-"start_game": SubResource("Animation_50mee"),
-"title_sequence_start": SubResource("Animation_4eied")
+"start_game": SubResource("Animation_50mee")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b78m4"]
@@ -193,6 +345,54 @@ region = Rect2(866, 472, 433, 236)
 atlas = ExtResource("14_tcmad")
 region = Rect2(1299, 472, 433, 236)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbg8o"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(0, 0, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fbhr"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(433, 0, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iegxq"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(0, 236, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ecnp7"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(433, 236, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi67u"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(0, 472, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sckdb"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(433, 472, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0r1ls"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(0, 708, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxkoq"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(433, 708, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v6w2"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(0, 944, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1fi3"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(433, 944, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2wls"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(0, 1180, 433, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v250n"]
+atlas = ExtResource("15_g8h03")
+region = Rect2(433, 1180, 433, 236)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_30j0e"]
 animations = [{
 "frames": [{
@@ -252,6 +452,62 @@ animations = [{
 "loop": true,
 "name": &"sawblade",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbg8o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fbhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iegxq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ecnp7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pi67u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sckdb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0r1ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxkoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v6w2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1fi3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2wls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v250n")
+}],
+"loop": true,
+"name": &"title_idle_anim",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_78oql"]
+atlas = ExtResource("15_xxwlb")
+region = Rect2(4788, 0, 342, 246)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jknev"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_78oql")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
 }]
 
 [node name="TitleMenu" type="Control"]
@@ -344,12 +600,12 @@ theme = ExtResource("1_1cwqb")
 text = "Quit"
 
 [node name="Label" type="Label" parent="."]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 1571.0
-offset_top = 332.0
-offset_right = 2000.0
-offset_bottom = 617.0
+offset_left = 1554.0
+offset_top = 74.0
+offset_right = 1874.0
+offset_bottom = 256.0
 text = "Game Design/Programming
 Falinere
 
@@ -357,13 +613,14 @@ Art and Sound Design
 LemurToast"
 
 [node name="Label2" type="Label" parent="."]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 25.0
-offset_top = 446.0
-offset_right = 664.0
-offset_bottom = 517.0
+offset_left = 337.0
+offset_top = 190.0
+offset_right = 670.0
+offset_bottom = 261.0
 text = "Equip Traps with keys 1-4
+Left click to place them
 Don't let the Snail touch you!"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -372,7 +629,19 @@ libraries = {
 }
 
 [node name="Truck" type="AnimatedSprite2D" parent="."]
-position = Vector2(1706, 361)
+position = Vector2(-400, 361)
+sprite_frames = SubResource("SpriteFrames_30j0e")
+animation = &"title_idle_anim"
+autoplay = "title_idle_anim"
+frame_progress = 0.106115
+
+[node name="Logo" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(503, 267)
+sprite_frames = SubResource("SpriteFrames_jknev")
+
+[node name="Truck2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-216, 287)
 sprite_frames = SubResource("SpriteFrames_30j0e")
 autoplay = "default"
 
@@ -383,8 +652,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3194.0
 offset_top = -1376.0
-offset_right = 11954.0
-offset_bottom = 3274.0
+offset_right = 15794.0
+offset_bottom = 4374.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.567232

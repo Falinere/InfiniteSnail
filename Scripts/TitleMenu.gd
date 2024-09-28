@@ -5,7 +5,9 @@ extends Control
 
 
 func _ready():
-	animation_player.play("title_sequence_start")
+	animation_player.play("DisplayLogo")
+	await animation_player.animation_finished
+	animation_player.play("Load Menu Options")
 
 
 func _on_new_game_button_pressed():

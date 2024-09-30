@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://dtu1nw7cqb2ha"]
+[gd_scene load_steps=79 format=3 uid="uid://dtu1nw7cqb2ha"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_6dgby"]
 [ext_resource type="Script" path="res://Scripts/RoadsideObjectSpawner.gd" id="2_qp0ck"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bkymcwc67p43" path="res://Scenes/Snail.tscn" id="5_g8ltj"]
 [ext_resource type="Texture2D" uid="uid://c2k8bev64asns" path="res://Assets/Actors/truck.png" id="6_5crqx"]
 [ext_resource type="Texture2D" uid="uid://c8khpbaeo8ndk" path="res://Assets/Actors/truckSheet.png" id="6_avmi1"]
+[ext_resource type="Texture2D" uid="uid://db6488kq3doxi" path="res://Assets/Environments/Desert/humanskull.png" id="6_pjvgr"]
 [ext_resource type="Texture2D" uid="uid://cjlw2peqc7sga" path="res://Assets/Environments/Desert/sun.png" id="7_aaxb4"]
 [ext_resource type="Texture2D" uid="uid://dodq656damn01" path="res://Assets/Environments/Desert/mount3.png" id="7_dj4c1"]
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground_script.gd" id="7_m8pky"]
@@ -16,10 +17,13 @@
 [ext_resource type="Texture2D" uid="uid://do6mrg33wv0nf" path="res://Assets/Environments/Desert/Road.png" id="9_nbu5c"]
 [ext_resource type="Texture2D" uid="uid://cwbriv2hxhas1" path="res://Assets/Environments/Desert/middleground.png" id="9_w7iac"]
 [ext_resource type="Texture2D" uid="uid://dvwpv4echms66" path="res://Assets/Environments/Desert/mesa4.png" id="10_hcpuv"]
+[ext_resource type="Script" path="res://Scripts/Truck.gd" id="11_6pcnp"]
 [ext_resource type="Texture2D" uid="uid://d4ivxwlurs3q" path="res://Assets/Environments/Desert/mesa6.png" id="11_dno6j"]
+[ext_resource type="Texture2D" uid="uid://26yq4ti8h8yx" path="res://Assets/Particles/teardrop.png" id="12_rc7fh"]
+[ext_resource type="Texture2D" uid="uid://drjb8p7b4iot7" path="res://Assets/Particles/teardrop3.png" id="13_yjxlf"]
 [ext_resource type="Texture2D" uid="uid://clr88magdyhx8" path="res://Assets/Environments/Desert/mesa3.png" id="14_jdmdt"]
+[ext_resource type="Texture2D" uid="uid://cq4dm0d2tgc63" path="res://Assets/Particles/smoke_07.png" id="14_yoyru"]
 [ext_resource type="PackedScene" uid="uid://bxtpprf2tegj4" path="res://Scenes/RoadsideObject.tscn" id="18_msu0p"]
-[ext_resource type="Texture2D" uid="uid://vbn5x2pgclmv" path="res://Assets/Environments/Desert/skull.png" id="18_nuk4y"]
 [ext_resource type="Texture2D" uid="uid://ci2ysx31rgbqg" path="res://Assets/Environments/Desert/cowskull.png" id="19_q8wnj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc34f"]
@@ -362,6 +366,27 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Curve" id="Curve_xtsoe"]
+_data = [Vector2(0, 0.253078), 0.0, 0.0, 0, 0, Vector2(0.972881, 0.679891), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_d1t6m"]
+offsets = PackedFloat32Array(0, 0.337079, 0.681648, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.611765, 0.909804, 0.992157, 1, 0.928598, 0.806105, 0.379701, 1, 0.984314, 0.505882, 0, 1)
+
+[sub_resource type="Curve" id="Curve_a410l"]
+max_value = 4.0
+_data = [Vector2(0.176271, 0.661017), 0.0, 0.0, 0, 0, Vector2(0.572881, 2.67797), 0.0, 0.0, 0, 0, Vector2(0.983051, 4), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_xw8fs"]
+_data = [Vector2(0, 0.146375), 0.0, 0.0, 0, 0, Vector2(0.966102, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_cyyja"]
+offsets = PackedFloat32Array(0, 0.992509)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [sub_resource type="Animation" id="Animation_f7tqi"]
 length = 0.001
 tracks/0/type = "value"
@@ -376,6 +401,9 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(266, -1949)]
 }
+
+[sub_resource type="Animation" id="Animation_x5qo7"]
+resource_name = "game_win"
 
 [sub_resource type="Animation" id="Animation_fpnhr"]
 resource_name = "reveal"
@@ -396,15 +424,16 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ti2cw"]
 _data = {
 "RESET": SubResource("Animation_f7tqi"),
+"game_win": SubResource("Animation_x5qo7"),
 "reveal": SubResource("Animation_fpnhr")
 }
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_6dgby")
 
-[node name="Item" type="Timer" parent="."]
-unique_name_in_owner = true
-wait_time = 10.0
+[node name="Game_Timer" type="Timer" parent="."]
+wait_time = 120.0
+autostart = true
 
 [node name="Panel" type="Panel" parent="."]
 offset_left = 1117.0
@@ -413,6 +442,13 @@ offset_right = 1479.0
 offset_bottom = 550.0
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_lc34f")
+
+[node name="RoadsideObjectSpawner" type="Marker2D" parent="."]
+position = Vector2(2036, 300)
+script = ExtResource("2_qp0ck")
+
+[node name="Timer" type="Timer" parent="RoadsideObjectSpawner"]
+autostart = true
 
 [node name="ObstacleBucket" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -465,13 +501,6 @@ collision_mask = 0
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_n5vc2")
 
-[node name="RoadsideObjectSpawner" type="Marker2D" parent="."]
-position = Vector2(2036, 300)
-script = ExtResource("2_qp0ck")
-
-[node name="Timer" type="Timer" parent="RoadsideObjectSpawner"]
-autostart = true
-
 [node name="UI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -511,7 +540,7 @@ layout_mode = 2
 
 [node name="EnviromentItem" parent="." instance=ExtResource("18_msu0p")]
 position = Vector2(876, 301)
-texture = ExtResource("18_nuk4y")
+texture = ExtResource("6_pjvgr")
 
 [node name="EnviromentItem2" parent="." instance=ExtResource("18_msu0p")]
 position = Vector2(565, 307)
@@ -521,11 +550,85 @@ texture = ExtResource("19_q8wnj")
 position = Vector2(217, 368)
 
 [node name="Truck" type="AnimatedSprite2D" parent="."]
-position = Vector2(1706, 361)
+position = Vector2(1706, 368)
 sprite_frames = SubResource("SpriteFrames_jr8cw")
-animation = &"full_charge"
-autoplay = "default"
-frame_progress = 0.141675
+animation = &"charge1"
+autoplay = "charge1"
+script = ExtResource("11_6pcnp")
+
+[node name="ChangeAnimation" type="Timer" parent="Truck"]
+wait_time = 20.0
+autostart = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Truck"]
+visible = false
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(-170, 62)
+amount = 12
+local_coords = true
+draw_order = 1
+texture = ExtResource("12_rc7fh")
+gravity = Vector2(-50, 0)
+angle_min = 180.0
+angle_max = 180.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_xtsoe")
+color_ramp = SubResource("Gradient_d1t6m")
+
+[node name="Booster" type="CPUParticles2D" parent="Truck"]
+show_behind_parent = true
+z_as_relative = false
+position = Vector2(-172, 66)
+emitting = false
+amount = 12
+local_coords = true
+draw_order = 1
+texture = ExtResource("13_yjxlf")
+gravity = Vector2(-50, 0)
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_xtsoe")
+color_ramp = SubResource("Gradient_d1t6m")
+
+[node name="Smokestack1" type="CPUParticles2D" parent="Truck"]
+show_behind_parent = true
+position = Vector2(-22, -62)
+amount = 50
+lifetime = 2.0
+lifetime_randomness = 0.39
+texture = ExtResource("14_yoyru")
+spread = 108.06
+gravity = Vector2(0, -50)
+angular_velocity_min = -195.1
+angular_velocity_max = 158.41
+tangential_accel_min = 63.69
+tangential_accel_max = 63.69
+tangential_accel_curve = SubResource("Curve_a410l")
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_xw8fs")
+color_ramp = SubResource("Gradient_cyyja")
+
+[node name="Smokestack2" type="CPUParticles2D" parent="Truck"]
+show_behind_parent = true
+position = Vector2(-3, -64)
+amount = 50
+lifetime = 2.0
+lifetime_randomness = 0.39
+texture = ExtResource("14_yoyru")
+spread = 108.06
+gravity = Vector2(0, -50)
+angular_velocity_min = -195.1
+angular_velocity_max = 158.41
+tangential_accel_min = 63.69
+tangential_accel_max = 63.69
+tangential_accel_curve = SubResource("Curve_a410l")
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_xw8fs")
+color_ramp = SubResource("Gradient_cyyja")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("7_m8pky")
@@ -618,3 +721,4 @@ max_value = 120.0
 
 [connection signal="mouse_entered" from="PlaceableObjectArea" to="." method="_on_mouse_entered_object_area"]
 [connection signal="mouse_exited" from="PlaceableObjectArea" to="." method="_on_mouse_exited_object_area"]
+[connection signal="timeout" from="Truck/ChangeAnimation" to="Truck" method="_on_change_animation_timeout"]

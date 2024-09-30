@@ -83,6 +83,10 @@ func what_areas_overlap() -> void:
 		_on_area_2d_area_entered(node)
 
 
+func turn_off_collision() -> void:
+	area_2d.monitoring = false
+
+
 func _on_area_2d_area_entered(area):
 	var trap = area.get_parent().item_resource
 	

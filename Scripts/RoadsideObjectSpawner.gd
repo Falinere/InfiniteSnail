@@ -7,7 +7,7 @@ extends Marker2D
 const ROADSIDE_ITEM = preload("res://Scenes/RoadsideObject.tscn")
 
 var enviroment_images : Array = [
-	preload("res://Assets/Environments/Desert/skull.png"),
+	preload("res://Assets/Environments/Desert/humanskull.png"),
 	preload("res://Assets/Environments/Desert/cowskull.png")
 ]
 

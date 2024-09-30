@@ -6,9 +6,10 @@ signal Main_Scene_Loaded
 
 @onready var item_container = $UI/Item_Container
 @onready var label = %Label
-@onready var item = %Item
 @onready var animation_player = $AnimationPlayer
 @onready var progress_bar = $ProgressBar
+@onready var game_timer = $Game_Timer
+@onready var snail = $Snail
 
 
 
@@ -20,9 +21,9 @@ func _ready():
 	ItemPlacementManager.obstacle_bucket = $ObstacleBucket
 	ItemPlacementManager.update_ui.connect(item_container.update_ui)
 	ItemPlacementManager.reduce_item.connect(item_container.item_used)
-	item.timeout.connect(ItemPlacementManager.add_new_option)
 	ItemPlacementManager.main_scene_on()
 	Main_Scene_Loaded.emit()
+	#game_timer.timeout.connect()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -49,3 +50,7 @@ func _on_mouse_entered_object_area():
 
 func _on_mouse_exited_object_area():
 	ItemPlacementManager.can_place_object = false
+
+
+func game_win() -> void:
+	snail.turn_off_collision()

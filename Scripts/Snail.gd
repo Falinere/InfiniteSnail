@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name Snail
 
+signal lose_game
+
+
 @onready var check_top = $"Top"
 @onready var check_bottom = $"Bottom"
 @onready var detect_object = $DetectObject
@@ -21,7 +24,7 @@ var knockback_force = Vector2.ZERO
 var vertical_weight : int = 0
 var wait_for_speed_reset : bool = false
 
-
+var game_over : bool = false
 
 
 func _ready():
@@ -88,6 +91,17 @@ func turn_off_collision() -> void:
 
 
 func _on_area_2d_area_entered(area):
+	
+	if area.name == "LoseBarrier" and game_over == false:
+		cur_speed = 0
+		speed = 0
+		game_over = true
+		lose_game.emit()
+		return
+	
+	if area.name == "LoseBarrier":
+		return
+	
 	var trap = area.get_parent().item_resource
 	
 	match trap.item_effect:
@@ -104,6 +118,10 @@ func _on_area_2d_area_entered(area):
 
 
 func _on_area_2d_area_exited(area):
+	
+	if area.name == "LoseBarrier":
+		return
+	
 	var trap = area.get_parent().item_resource
 	
 	match trap.item_effect:
@@ -150,6 +168,8 @@ func push_h(timing : String, trap : Item) -> void:
 
 
 func add_new_ability() -> void:
+	if cur_speed == 0:
+		return
 	#Don't increase speed if we are currently affected by a trap
 	#wait for the trap to leave the body before apply speed boost
 	if cur_speed != speed:

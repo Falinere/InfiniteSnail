@@ -1,7 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://w44doyx5q45j"]
+[gd_scene load_steps=62 format=3 uid="uid://w44doyx5q45j"]
 
 [ext_resource type="Theme" uid="uid://b2r8mpitg2c5c" path="res://new_theme.tres" id="1_1cwqb"]
 [ext_resource type="Script" path="res://Scripts/TitleMenu.gd" id="1_nh2w7"]
+[ext_resource type="AudioStream" uid="uid://dhqhe0703k8tv" path="res://Assets/Audio/Sfx/click.wav" id="2_ks1tc"]
 [ext_resource type="Script" path="res://Scripts/ParallaxBackground_script.gd" id="2_obwmu"]
 [ext_resource type="Texture2D" uid="uid://dodq656damn01" path="res://Assets/Environments/Desert/mount3.png" id="3_ah6fh"]
 [ext_resource type="Texture2D" uid="uid://1bvk6k0cxejo" path="res://Assets/Environments/Desert/mount1.png" id="4_ghw8w"]
@@ -16,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://c8khpbaeo8ndk" path="res://Assets/Actors/truckSheet.png" id="14_tcmad"]
 [ext_resource type="Texture2D" uid="uid://c2k8bev64asns" path="res://Assets/Actors/truck.png" id="15_g8h03"]
 [ext_resource type="Texture2D" uid="uid://dku4u8qkq277n" path="res://Assets/SplashScreen/logo-Sheet.png" id="15_xxwlb"]
+[ext_resource type="Texture2D" uid="uid://cq4dm0d2tgc63" path="res://Assets/Particles/smoke_07.png" id="16_2fl7i"]
+[ext_resource type="AudioStream" uid="uid://cjpwpiaw1m64p" path="res://Assets/Audio/Music/Fastropod.mp3" id="19_5rr60"]
 
 [sub_resource type="Animation" id="Animation_vd735"]
 resource_name = "DisplayLogo"
@@ -495,6 +498,32 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Curve" id="Curve_nhpu6"]
+max_value = 4.0
+_data = [Vector2(0.176271, 0.661017), 0.0, 0.0, 0, 0, Vector2(0.572881, 2.67797), 0.0, 0.0, 0, 0, Vector2(0.983051, 4), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_shfjf"]
+_data = [Vector2(0, 0.146375), 0.0, 0.0, 0, 0, Vector2(0.966102, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_smpba"]
+offsets = PackedFloat32Array(0, 0.992509)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_p63gl"]
+max_value = 4.0
+_data = [Vector2(0.176271, 0.661017), 0.0, 0.0, 0, 0, Vector2(0.572881, 2.67797), 0.0, 0.0, 0, 0, Vector2(0.983051, 4), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_po7mi"]
+_data = [Vector2(0, 0.146375), 0.0, 0.0, 0, 0, Vector2(0.966102, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_fnxds"]
+offsets = PackedFloat32Array(0, 0.992509)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_78oql"]
 atlas = ExtResource("15_xxwlb")
 region = Rect2(4788, 0, 342, 246)
@@ -518,6 +547,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nh2w7")
+metadata/_edit_vertical_guides_ = [299.0]
+metadata/_edit_horizontal_guides_ = [300.0]
+
+[node name="ButtonSounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ks1tc")
+bus = &"Sound Effects"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("2_obwmu")
@@ -590,11 +625,11 @@ offset_bottom = 550.0
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="NewGame" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "New Game"
 
-[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Quit" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("1_1cwqb")
 text = "Quit"
@@ -602,10 +637,10 @@ text = "Quit"
 [node name="Panel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 0
-offset_left = 1551.0
-offset_top = 78.0
-offset_right = 1888.0
-offset_bottom = 260.0
+offset_left = 1182.0
+offset_top = 118.0
+offset_right = 1519.0
+offset_bottom = 300.0
 
 [node name="Label" type="Label" parent="Panel"]
 modulate = Color(1, 1, 1, 0.9)
@@ -650,6 +685,44 @@ animation = &"title_idle_anim"
 autoplay = "title_idle_anim"
 frame_progress = 0.496138
 
+[node name="Smokestack1" type="CPUParticles2D" parent="Truck"]
+show_behind_parent = true
+position = Vector2(-22, -62)
+amount = 50
+lifetime = 2.0
+lifetime_randomness = 0.39
+texture = ExtResource("16_2fl7i")
+spread = 108.06
+gravity = Vector2(0, -50)
+angular_velocity_min = -195.1
+angular_velocity_max = 158.41
+tangential_accel_min = 63.69
+tangential_accel_max = 63.69
+tangential_accel_curve = SubResource("Curve_nhpu6")
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_shfjf")
+color_ramp = SubResource("Gradient_smpba")
+
+[node name="Smokestack2" type="CPUParticles2D" parent="Truck"]
+show_behind_parent = true
+position = Vector2(-3, -64)
+amount = 50
+lifetime = 2.0
+lifetime_randomness = 0.39
+texture = ExtResource("16_2fl7i")
+spread = 108.06
+gravity = Vector2(0, -50)
+angular_velocity_min = -195.1
+angular_velocity_max = 158.41
+tangential_accel_min = 63.69
+tangential_accel_max = 63.69
+tangential_accel_curve = SubResource("Curve_p63gl")
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_po7mi")
+color_ramp = SubResource("Gradient_fnxds")
+
 [node name="Logo" type="AnimatedSprite2D" parent="."]
 visible = false
 position = Vector2(503, 267)
@@ -667,11 +740,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 3194.0
 offset_top = -1376.0
-offset_right = 23474.0
-offset_bottom = 6574.0
+offset_right = 36914.0
+offset_bottom = 10424.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.567232
 color = Color(0, 0, 0, 1)
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_new_game_button_pressed"]
+[node name="Soundtrack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_5rr60")
+autoplay = true
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/NewGame" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

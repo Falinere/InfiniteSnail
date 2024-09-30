@@ -36,7 +36,9 @@ func _ready():
 func _process(delta):
 	
 	if preview_enabled and Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) and ItemPlacementManager.can_place_object:
+		ItemPlacementManager.play_sound(item_resource.name)
 		setup()
+	
 	
 	sprite_2d.material.set_shader_parameter("PLACEABLE", ItemPlacementManager.can_place_object)
 

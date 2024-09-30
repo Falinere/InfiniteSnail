@@ -6,6 +6,12 @@ signal reduce_item(number)
 const WORLD_ITEM = preload("res://Scenes/Items/WorldItem.tscn")
 const ITEM_NODE = preload("res://Scenes/ItemNode.tscn")
 
+var sound_dictionary : Dictionary = {
+	"SaltPile" : preload("res://Assets/Audio/Sfx/salt.wav"),
+	"SpinningBlade" : preload("res://Assets/Audio/Sfx/saw.wav"),
+	"SpikeTrap" : preload("res://Assets/Audio/Sfx/spiketrap.wav"),
+	"CartoonBomb" : preload("res://Assets/Audio/Sfx/trapDeploy.wav")
+}
 
 var resource_array : Array[Item] = []
 var item_total : int = 0
@@ -71,6 +77,8 @@ func does_slot_exist(key_pressed : int) -> Node2D:
 
 func preview_item(item : Node) -> void:
 	
+	get_node("/root/Main/ChooseObject").play()
+	
 	for item_node in obstacle_bucket.get_children():
 		if item_node.preview_enabled:
 			item_node.queue_free()
@@ -111,3 +119,8 @@ func update_object_placement_ability(index : int, update : bool) -> void:
 
 func reduce_item_quantity(key : int):
 	reduce_item.emit(key)
+
+
+func play_sound(name : String) -> void:
+	get_node("/root/Main/ObjectSounds").stream = sound_dictionary[name]
+	get_node("/root/Main/ObjectSounds").play()

@@ -1,9 +1,11 @@
-[gd_scene load_steps=79 format=3 uid="uid://dtu1nw7cqb2ha"]
+[gd_scene load_steps=84 format=3 uid="uid://dtu1nw7cqb2ha"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_6dgby"]
 [ext_resource type="Script" path="res://Scripts/RoadsideObjectSpawner.gd" id="2_qp0ck"]
+[ext_resource type="AudioStream" uid="uid://dhkhu5b0l5cau" path="res://Assets/Audio/Sfx/select.wav" id="2_rdyg5"]
 [ext_resource type="PackedScene" uid="uid://yrbusf788kwp" path="res://Scenes/WORLD_ITEM_UI.tscn" id="3_pcpgd"]
 [ext_resource type="Script" path="res://Scripts/Item_Container.gd" id="3_spt6m"]
+[ext_resource type="AudioStream" uid="uid://cjpwpiaw1m64p" path="res://Assets/Audio/Music/Fastropod.mp3" id="3_whlou"]
 [ext_resource type="PackedScene" uid="uid://bkymcwc67p43" path="res://Scenes/Snail.tscn" id="5_g8ltj"]
 [ext_resource type="Texture2D" uid="uid://c2k8bev64asns" path="res://Assets/Actors/truck.png" id="6_5crqx"]
 [ext_resource type="Texture2D" uid="uid://c8khpbaeo8ndk" path="res://Assets/Actors/truckSheet.png" id="6_avmi1"]
@@ -19,12 +21,278 @@
 [ext_resource type="Texture2D" uid="uid://dvwpv4echms66" path="res://Assets/Environments/Desert/mesa4.png" id="10_hcpuv"]
 [ext_resource type="Script" path="res://Scripts/Truck.gd" id="11_6pcnp"]
 [ext_resource type="Texture2D" uid="uid://d4ivxwlurs3q" path="res://Assets/Environments/Desert/mesa6.png" id="11_dno6j"]
-[ext_resource type="Texture2D" uid="uid://26yq4ti8h8yx" path="res://Assets/Particles/teardrop.png" id="12_rc7fh"]
+[ext_resource type="AudioStream" uid="uid://b5k21v42ir2xf" path="res://Assets/Audio/Sfx/boostCharge.wav" id="13_ryuj4"]
 [ext_resource type="Texture2D" uid="uid://drjb8p7b4iot7" path="res://Assets/Particles/teardrop3.png" id="13_yjxlf"]
+[ext_resource type="AudioStream" uid="uid://cd6cv5lxhv6s7" path="res://Assets/Audio/Sfx/engine.wav" id="14_58fax"]
 [ext_resource type="Texture2D" uid="uid://clr88magdyhx8" path="res://Assets/Environments/Desert/mesa3.png" id="14_jdmdt"]
 [ext_resource type="Texture2D" uid="uid://cq4dm0d2tgc63" path="res://Assets/Particles/smoke_07.png" id="14_yoyru"]
 [ext_resource type="PackedScene" uid="uid://bxtpprf2tegj4" path="res://Scenes/RoadsideObject.tscn" id="18_msu0p"]
 [ext_resource type="Texture2D" uid="uid://ci2ysx31rgbqg" path="res://Assets/Environments/Desert/cowskull.png" id="19_q8wnj"]
+
+[sub_resource type="Animation" id="Animation_f7tqi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(266, -1949)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Truck/Booster:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Truck:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1706, 368)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/Label:size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1944, 1400)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Control/Label:text")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["YOU
+WIN!!!"]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Control/VBoxContainer:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_6vofa"]
+resource_name = "game_lose"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.631373)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/Label:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9, 1.4),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1944, 1400), Vector2(1944, 576)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/Label:text")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["YOU
+LOSE!!!"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/VBoxContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_x5qo7"]
+resource_name = "game_win"
+length = 2.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Truck/Booster:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Truck:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7, 1.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(1706, 368), Vector2(2400, 368)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control/ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.631373)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control/Label:size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2, 2.5),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1944, 1400), Vector2(1944, 576)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Control/VBoxContainer:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.8),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fpnhr"]
+resource_name = "reveal"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(266, -1949), Vector2(-2734, -1949)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ti2cw"]
+_data = {
+"RESET": SubResource("Animation_f7tqi"),
+"game_lose": SubResource("Animation_6vofa"),
+"game_win": SubResource("Animation_x5qo7"),
+"reveal": SubResource("Animation_fpnhr")
+}
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lc34f"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -387,55 +655,31 @@ point_count = 2
 offsets = PackedFloat32Array(0, 0.992509)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="Animation" id="Animation_f7tqi"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(266, -1949)]
-}
-
-[sub_resource type="Animation" id="Animation_x5qo7"]
-resource_name = "game_win"
-
-[sub_resource type="Animation" id="Animation_fpnhr"]
-resource_name = "reveal"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(266, -1949), Vector2(-2734, -1949)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ti2cw"]
-_data = {
-"RESET": SubResource("Animation_f7tqi"),
-"game_win": SubResource("Animation_x5qo7"),
-"reveal": SubResource("Animation_fpnhr")
-}
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gucvx"]
+size = Vector2(20, 228)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_6dgby")
+
+[node name="ChooseObject" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_rdyg5")
+bus = &"Sound Effects"
+
+[node name="ObjectSounds" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Soundtrack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_whlou")
 
 [node name="Game_Timer" type="Timer" parent="."]
 wait_time = 120.0
 autostart = true
 
-[node name="Panel" type="Panel" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ti2cw")
+}
+
+[node name="ClickableUIPanel" type="Panel" parent="."]
 offset_left = 1117.0
 offset_top = 332.0
 offset_right = 1479.0
@@ -501,43 +745,6 @@ collision_mask = 0
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_n5vc2")
 
-[node name="UI" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 1485.0
-offset_top = 37.0
-offset_right = 1485.0
-offset_bottom = 37.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Item_Container" type="HBoxContainer" parent="UI"]
-custom_minimum_size = Vector2(160, 0)
-layout_mode = 0
-offset_left = -219.0
-offset_top = -19.0
-offset_right = 276.0
-offset_bottom = -19.0
-theme_override_constants/separation = 165
-alignment = 2
-script = ExtResource("3_spt6m")
-
-[node name="1" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
-visible = false
-layout_mode = 2
-
-[node name="2" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
-visible = false
-layout_mode = 2
-
-[node name="3" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
-visible = false
-layout_mode = 2
-
-[node name="4" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
-visible = false
-layout_mode = 2
-
 [node name="EnviromentItem" parent="." instance=ExtResource("18_msu0p")]
 position = Vector2(876, 301)
 texture = ExtResource("6_pjvgr")
@@ -557,25 +764,8 @@ autoplay = "charge1"
 script = ExtResource("11_6pcnp")
 
 [node name="ChangeAnimation" type="Timer" parent="Truck"]
-wait_time = 20.0
+wait_time = 24.0
 autostart = true
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Truck"]
-visible = false
-show_behind_parent = true
-z_as_relative = false
-position = Vector2(-170, 62)
-amount = 12
-local_coords = true
-draw_order = 1
-texture = ExtResource("12_rc7fh")
-gravity = Vector2(-50, 0)
-angle_min = 180.0
-angle_max = 180.0
-scale_amount_min = 2.0
-scale_amount_max = 2.0
-scale_amount_curve = SubResource("Curve_xtsoe")
-color_ramp = SubResource("Gradient_d1t6m")
 
 [node name="Booster" type="CPUParticles2D" parent="Truck"]
 show_behind_parent = true
@@ -629,6 +819,34 @@ scale_amount_min = 0.15
 scale_amount_max = 0.15
 scale_amount_curve = SubResource("Curve_xw8fs")
 color_ramp = SubResource("Gradient_cyyja")
+
+[node name="Smokestack3" type="CPUParticles2D" parent="Truck"]
+show_behind_parent = true
+position = Vector2(-3, -64)
+amount = 50
+lifetime = 2.0
+lifetime_randomness = 0.39
+texture = ExtResource("14_yoyru")
+spread = 108.06
+gravity = Vector2(0, -50)
+angular_velocity_min = -195.1
+angular_velocity_max = 158.41
+tangential_accel_min = 63.69
+tangential_accel_max = 63.69
+tangential_accel_curve = SubResource("Curve_a410l")
+scale_amount_min = 0.15
+scale_amount_max = 0.15
+scale_amount_curve = SubResource("Curve_xw8fs")
+color_ramp = SubResource("Gradient_cyyja")
+
+[node name="BoostSound" type="AudioStreamPlayer2D" parent="Truck"]
+stream = ExtResource("13_ryuj4")
+bus = &"Sound Effects"
+
+[node name="EngineRumble" type="AudioStreamPlayer2D" parent="Truck"]
+stream = ExtResource("14_58fax")
+autoplay = true
+bus = &"TruckSounds"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("7_m8pky")
@@ -698,11 +916,6 @@ offset_top = 297.0
 offset_right = 825.0
 offset_bottom = 320.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ti2cw")
-}
-
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 10
 offset_left = 266.0
@@ -712,13 +925,102 @@ offset_bottom = 1051.0
 rotation = 0.567232
 color = Color(0, 0, 0, 1)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = 370.0
-offset_top = 49.0
-offset_right = 770.0
-offset_bottom = 87.0
-max_value = 120.0
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1485.0
+offset_top = 37.0
+offset_right = 1485.0
+offset_bottom = 37.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Item_Container" type="HBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 0
+offset_left = -219.0
+offset_top = -19.0
+offset_right = 276.0
+offset_bottom = -19.0
+theme_override_constants/separation = 165
+alignment = 2
+script = ExtResource("3_spt6m")
+
+[node name="1" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
+visible = false
+layout_mode = 2
+
+[node name="2" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
+visible = false
+layout_mode = 2
+
+[node name="3" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
+visible = false
+layout_mode = 2
+
+[node name="4" parent="UI/Item_Container" instance=ExtResource("3_pcpgd")]
+visible = false
+layout_mode = 2
+
+[node name="Control" type="Control" parent="."]
+visible = false
+z_index = 15
+layout_mode = 3
+anchors_preset = 0
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 1933.0
+offset_bottom = 565.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 824.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 72
+text = "YOU
+WIN!!!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 907.0
+offset_top = 395.0
+offset_right = 1050.0
+offset_bottom = 483.0
+
+[node name="PlayAgain" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Play Again"
+
+[node name="TitleScreen" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Title Screen"
+
+[node name="LoseBarrier" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LoseBarrier"]
+position = Vector2(1490, 439)
+shape = SubResource("RectangleShape2D_gucvx")
 
 [connection signal="mouse_entered" from="PlaceableObjectArea" to="." method="_on_mouse_entered_object_area"]
 [connection signal="mouse_exited" from="PlaceableObjectArea" to="." method="_on_mouse_exited_object_area"]
 [connection signal="timeout" from="Truck/ChangeAnimation" to="Truck" method="_on_change_animation_timeout"]
+[connection signal="pressed" from="Control/VBoxContainer/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/TitleScreen" to="." method="_on_title_screen_pressed"]

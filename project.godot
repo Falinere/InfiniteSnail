@@ -74,9 +74,12 @@ space={
 2d_physics/layer_3="Lower Wall"
 2d_physics/layer_4="Snail"
 2d_physics/layer_5="Wall"
+2d_physics/layer_6="Lose_Barrier"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/lossless_compression/force_png=true
 environment/defaults/default_clear_color=Color(0.533333, 0.443137, 0.666667, 1)

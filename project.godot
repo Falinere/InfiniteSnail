@@ -21,7 +21,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ItemPlacementManager="*res://Scripts/ItemPlacementManager.gd"
+ItemPlacementManager="*res://Scenes/item_manager.tscn"
 
 [display]
 

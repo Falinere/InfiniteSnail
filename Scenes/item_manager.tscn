@@ -1,0 +1,11 @@
+[gd_scene load_steps=6 format=3 uid="uid://bt6sqf7xxacb4"]
+
+[ext_resource type="Script" path="res://Scripts/ItemPlacementManager.gd" id="1_ld3j7"]
+[ext_resource type="Resource" uid="uid://bvso67peuf34a" path="res://Resources/CartoonBomb.tres" id="2_l7rht"]
+[ext_resource type="Resource" uid="uid://b5gmq3x5xomoq" path="res://Resources/SaltPile.tres" id="3_jihyg"]
+[ext_resource type="Resource" uid="uid://dsd54mpi2vw4y" path="res://Resources/SpikeTrap.tres" id="4_pk1jw"]
+[ext_resource type="Resource" uid="uid://vdhrfjopjuj6" path="res://Resources/SpinningBlade.tres" id="5_fprf0"]
+
+[node name="ItemManager" type="Node"]
+script = ExtResource("1_ld3j7")
+resource_array = Array[Resource("res://Scripts/Item.gd")]([ExtResource("2_l7rht"), ExtResource("3_jihyg"), ExtResource("4_pk1jw"), ExtResource("5_fprf0")])

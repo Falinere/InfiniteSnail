@@ -43,7 +43,7 @@ func _physics_process(delta):
 		wait_for_speed_reset = false
 		add_new_ability()
 	
-	if area_2d.has_overlapping_areas():
+	if area_2d.monitoring and area_2d.has_overlapping_areas():
 		what_areas_overlap()
 	
 	_velocity.x = cur_speed + knockback_force.x

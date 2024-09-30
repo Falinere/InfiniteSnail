@@ -6,6 +6,8 @@ signal reduce_item(number)
 const WORLD_ITEM = preload("res://Scenes/Items/WorldItem.tscn")
 const ITEM_NODE = preload("res://Scenes/ItemNode.tscn")
 
+@export var resource_array : Array[Item] = []
+
 var sound_dictionary : Dictionary = {
 	"SaltPile" : preload("res://Assets/Audio/Sfx/salt.wav"),
 	"SpinningBlade" : preload("res://Assets/Audio/Sfx/saw.wav"),
@@ -13,7 +15,6 @@ var sound_dictionary : Dictionary = {
 	"CartoonBomb" : preload("res://Assets/Audio/Sfx/trapDeploy.wav")
 }
 
-var resource_array : Array[Item] = []
 var item_total : int = 0
 var obstacle_bucket
 var can_place_object : bool = false
@@ -28,7 +29,7 @@ var item_available : Dictionary = {
 
 
 func _ready():
-	popuplate_resource_array()
+	#populate_resource_array()
 	resource_array.shuffle()
 
 
@@ -40,14 +41,19 @@ func main_scene_on() -> void:
 	add_new_option()
 
 
-func popuplate_resource_array():
+func populate_resource_array():
 	var dir = DirAccess.open("res://Resources/")
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
-			if file_name.ends_with(".tres"):
-				var item = load("res://Resources/".path_join(file_name))
+			var is_resource = false
+			if OS.has_feature("standalone"):
+				is_resource = file_name.ends_with(".tres.remap")
+			else:
+				is_resource = file_name.ends_with(".tres")
+			if is_resource:
+				var item = load("res://Resources/".path_join(file_name.trim_suffix(".remap")))
 				resource_array.append(item)
 			file_name = dir.get_next()
 		dir.list_dir_end()

@@ -70,6 +70,7 @@ func setup() -> void:
 			animated_sprite_2d.play("salt")
 			preview_enabled = false
 		"SpikeTrap":
+			sprite_2d.visible = false
 			animated_sprite_2d.play("spiketrap")
 			preview_enabled = false
 		"SpinningBlade":
@@ -82,6 +83,14 @@ func setup() -> void:
 			animated_sprite_2d.play("sawblade-2")
 		_:
 			preview_enabled = false
+
+
+func bomb_explode() -> void:
+	sprite_2d.visible = false
+	animated_sprite_2d.offset = Vector2(-3.0, -210.0)
+	animated_sprite_2d.play("bomb_explode")
+	await animated_sprite_2d.animation_finished
+	queue_free()
 
 
 func disable_preview() -> void:

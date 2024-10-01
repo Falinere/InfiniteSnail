@@ -113,7 +113,7 @@ func _on_area_2d_area_entered(area):
 			area.get_parent().queue_free()
 			push_s("start", trap)
 		3:
-			area.get_parent().queue_free()
+			area.get_parent().bomb_explode()
 			push_h("start", trap)
 
 

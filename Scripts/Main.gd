@@ -61,6 +61,7 @@ func game_win() -> void:
 	game_over = true
 	snail.turn_off_collision()
 	animation_player.play("game_win")
+	ItemPlacementManager.game_reset()
 
 
 func game_lose() -> void:
@@ -69,6 +70,7 @@ func game_lose() -> void:
 	
 	animation_player.play("game_lose")
 	game_timer.stop()
+	ItemPlacementManager.game_reset()
 
 
 func _on_play_again_pressed():

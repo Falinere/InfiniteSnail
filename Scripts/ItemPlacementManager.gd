@@ -130,3 +130,7 @@ func reduce_item_quantity(key : int):
 func play_sound(name : String) -> void:
 	get_node("/root/Main/ObjectSounds").stream = sound_dictionary[name]
 	get_node("/root/Main/ObjectSounds").play()
+
+
+func game_reset() -> void:
+	item_total = 0

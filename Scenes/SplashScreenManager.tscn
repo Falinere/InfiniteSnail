@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://5pi5yorj36yq"]
+[gd_scene load_steps=22 format=3 uid="uid://5pi5yorj36yq"]
 
 [ext_resource type="Script" path="res://Scripts/SplashScreenManager.gd" id="1_4abnu"]
 [ext_resource type="Texture2D" uid="uid://bl01kg6iykfik" path="res://Assets/SplashScreen/made-with-godot-light.png" id="1_dlqeg"]
 [ext_resource type="PackedScene" uid="uid://w44doyx5q45j" path="res://Scenes/TitleMenu.tscn" id="2_h7cag"]
 [ext_resource type="Texture2D" uid="uid://dku4u8qkq277n" path="res://Assets/SplashScreen/logo-Sheet.png" id="4_d8eqd"]
+[ext_resource type="Texture2D" uid="uid://c4wx6o67ukfp7" path="res://Assets/SplashScreen/jernjam.png" id="5_75m63"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ak3fr"]
 atlas = ExtResource("4_d8eqd")
@@ -154,3 +155,15 @@ texture = ExtResource("1_dlqeg")
 visible = false
 position = Vector2(958, 208)
 sprite_frames = SubResource("SpriteFrames_viftv")
+
+[node name="Jam" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CenterContainer/Jam"]
+layout_mode = 2
+text = "Submitted for"
+horizontal_alignment = 2
+
+[node name="JamLogo" type="TextureRect" parent="CenterContainer/Jam"]
+layout_mode = 2
+texture = ExtResource("5_75m63")

@@ -8,7 +8,7 @@ extends Control
 @export var fade_out_time : float = 1.5
 @export var out_time : float = 0.5
 @onready var splash_screen = $CenterContainer/TextureRect
-@onready var animated_sprite_2d = $CenterContainer/AnimatedSprite2D
+@onready var jam = $CenterContainer/Jam
 
 
 func _ready():
@@ -17,6 +17,7 @@ func _ready():
 
 func fade() -> void:
 	splash_screen.modulate.a = 0.0
+	jam.modulate.a = 0.0
 	
 	#Animate Made with Godot
 	var tween = self.create_tween()
@@ -27,19 +28,19 @@ func fade() -> void:
 	tween.tween_interval(out_time)
 	await tween.finished
 	
-	#Animate Immortal Snail Logo
-	#animate_game_logo()
+	#Animate GameJam Logo
+	animate_jam_logo()
+
+
+func animate_jam_logo() -> void:
+	
+	var tween = self.create_tween()
+	tween.tween_interval(in_time)
+	tween.tween_property(jam, "modulate:a", 1.0, fade_in_time)
+	tween.tween_interval(pause_time)
+	tween.tween_property(jam, "modulate:a", 0.0, fade_out_time)
+	tween.tween_interval(out_time)
+	await tween.finished
 	
 	#Change scene to Title scene
 	get_tree().change_scene_to_packed(load_scene)
-
-
-func animate_game_logo() -> void:
-	animated_sprite_2d.visible = true
-	animated_sprite_2d.play("default")
-	await animated_sprite_2d.animation_finished
-	var tween2 = self.create_tween()
-	tween2.tween_interval(pause_time)
-	tween2.tween_property(animated_sprite_2d, "modulate:a", 0.0, fade_out_time)
-	tween2.tween_interval(out_time)
-	await tween2.finished
